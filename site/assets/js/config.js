@@ -1,9 +1,10 @@
 // Gerado a partir de src/config.mjs
 window.GM_CONFIG = {
-  "whatsapp": "5511900000000",
+  "whatsapp": "5511945610928",
   "email": "comercial@grafmed.ind.br",
-  "phone": "+55 (11) 0000-0000",
-  "address": "Jaraguá · São Paulo/SP",
+  "phone": "+55 (11) 2777-5001",
+  "phoneHref": "+551127775001",
+  "address": "R. Horácio Vergueiro Rudge, 495, Casa Verde, São Paulo/SP, CEP 02512-060",
   "mapEmbed": "",
   "instagram": "https://www.instagram.com/grafmed.oficial/",
   "linkedin": "https://www.linkedin.com/company/grafmed/",

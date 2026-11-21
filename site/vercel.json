@@ -1,18 +1,38 @@
 {
   "redirects": [
     {
+      "source": "/quemsomos",
+      "destination": "/quem-somos.html",
+      "permanent": true
+    },
+    {
+      "source": "/medico-hospitalar",
+      "destination": "/produtos/cme-hospitalar.html",
+      "permanent": true
+    },
+    {
+      "source": "/linha-medico-hospitalar",
+      "destination": "/produtos/cme-hospitalar.html",
+      "permanent": true
+    },
+    {
+      "source": "/linha-odontologica",
+      "destination": "/produtos/grafdental.html",
+      "permanent": true
+    },
+    {
+      "source": "/linha-odontol-gica",
+      "destination": "/produtos/grafdental.html",
+      "permanent": true
+    },
+    {
       "source": "/logistica",
       "destination": "/produtos/rotulos-etiquetas.html",
       "permanent": true
     },
     {
-      "source": "/distribuidores",
-      "destination": "/canal-parceiro.html",
-      "permanent": true
-    },
-    {
-      "source": "/artigos-e-noticias",
-      "destination": "/noticias.html",
+      "source": "/linha-logistica",
+      "destination": "/produtos/rotulos-etiquetas.html",
       "permanent": true
     },
     {
@@ -21,28 +41,218 @@
       "permanent": true
     },
     {
-      "source": "/quem-somos",
-      "destination": "/quem-somos.html",
+      "source": "/linha-servicos-e-oem",
+      "destination": "/produtos/conversao-materia-prima.html",
       "permanent": true
     },
     {
-      "source": "/hospitalar",
-      "destination": "/produtos/cme-hospitalar.html",
+      "source": "/produtos",
+      "destination": "/produtos/index.html",
       "permanent": true
     },
     {
-      "source": "/odontologico",
-      "destination": "/produtos/grafdental.html",
+      "source": "/distribuidores",
+      "destination": "/canal-parceiro.html",
       "permanent": true
     },
     {
-      "source": "/pulseiras",
-      "destination": "/produtos/pulseiras.html",
+      "source": "/artigosenoticias",
+      "destination": "/noticias.html",
+      "permanent": true
+    },
+    {
+      "source": "/orcamentos",
+      "destination": "/orcamento.html",
       "permanent": true
     },
     {
       "source": "/contato",
       "destination": "/contato.html",
+      "permanent": true
+    },
+    {
+      "source": "/product-page/etiqueta-duplo-uso-para-esteriliza%C3%A7%C3%A3o-a-vapor",
+      "destination": "/produtos/cme-hospitalar/etiqueta-duplo-uso-para-esterilizacao-a-vapor.html",
+      "permanent": true
+    },
+    {
+      "source": "/product-page/etiqueta-dupla-camada-adesiva",
+      "destination": "/produtos/cme-hospitalar/etiqueta-duplo-uso-para-esterilizacao.html",
+      "permanent": true
+    },
+    {
+      "source": "/product-page/etiqueta-para-etiquetadoras",
+      "destination": "/produtos/cme-hospitalar/etiqueta-duplo-uso-para-etiquetadoras.html",
+      "permanent": true
+    },
+    {
+      "source": "/product-page/etiqueta-duplo-uso-vpph-para-etiquetadoras",
+      "destination": "/produtos/cme-hospitalar/etiqueta-duplo-uso-vpph-para-etiquetadoras.html",
+      "permanent": true
+    },
+    {
+      "source": "/product-page/etiqueta-colorida-para-esteriliza%C3%A7%C3%A3o",
+      "destination": "/produtos/cme-hospitalar/etiqueta-colorida-para-esterilizacao.html",
+      "permanent": true
+    },
+    {
+      "source": "/product-page/fita-identificadora-para-instrumental-cir%C3%BArgico",
+      "destination": "/produtos/cme-hospitalar/fita-identificadora-para-instrumental-cirurgico.html",
+      "permanent": true
+    },
+    {
+      "source": "/product-page/micro-etiqueta-com-qr-code",
+      "destination": "/produtos/cme-hospitalar/micro-etiqueta-com-qr-code.html",
+      "permanent": true
+    },
+    {
+      "source": "/product-page/tag-duplo-uso-com-lacre-para-containers",
+      "destination": "/produtos/cme-hospitalar/tag-duplo-uso-com-lacre-para-containers.html",
+      "permanent": true
+    },
+    {
+      "source": "/product-page/etiquetas-adesivas-para-seringas-norma-abnt-nbr-iso-26825-2021",
+      "destination": "/produtos/cme-hospitalar/etiquetas-adesivas-para-seringas.html",
+      "permanent": true
+    },
+    {
+      "source": "/product-page/ber%C3%A7os-em-polyurethane-foam",
+      "destination": "/produtos/conversao-materia-prima/bercos-ou-placas-em-espuma-de-poliuretano.html",
+      "permanent": true
+    },
+    {
+      "source": "/product-page/data-de-fabrica%C3%A7%C3%A3o-validade-delivery",
+      "destination": "/produtos/rotulos-etiquetas/data-de-fabricacao-validade-delivery.html",
+      "permanent": true
+    },
+    {
+      "source": "/product-page/etiqueta-adesiva-data-de-validade-delivery",
+      "destination": "/produtos/rotulos-etiquetas/etiqueta-data-de-validade-delivery.html",
+      "permanent": true
+    },
+    {
+      "source": "/product-page/etiqueta-adesiva-lacre-de-garantia-para-delivery",
+      "destination": "/produtos/rotulos-etiquetas/etiqueta-lacre-de-garantia-para-delivery.html",
+      "permanent": true
+    },
+    {
+      "source": "/product-page/etiqueta-adesiva-os-para-delivery",
+      "destination": "/produtos/rotulos-etiquetas/etiqueta-adesiva-o-s-delivery.html",
+      "permanent": true
+    },
+    {
+      "source": "/product-page/etiqueta-adesiva-qr-code-para-delivery",
+      "destination": "/produtos/rotulos-etiquetas/etiqueta-qr-code-para-delivery.html",
+      "permanent": true
+    },
+    {
+      "source": "/product-page/etiqueta-dupla-camada-adesiva-duplo-uso",
+      "destination": "/produtos/rotulos-etiquetas/etiqueta-dupla-camada-adesiva-duplo-uso.html",
+      "permanent": true
+    },
+    {
+      "source": "/product-page/etiqueta-duplo-uso-para-rastreio-de-material-desinfetado",
+      "destination": "/produtos/cme-hospitalar/etiqueta-duplo-uso-para-rastreio-de-material-desinfetado.html",
+      "permanent": true
+    },
+    {
+      "source": "/product-page/etiqueta-lacre-de-seguran%C3%A7a",
+      "destination": "/produtos/rotulos-etiquetas/etiqueta-lacre-de-seguranca.html",
+      "permanent": true
+    },
+    {
+      "source": "/product-page/etiqueta-n95-para-esteriliza%C3%A7%C3%A3o-de-m%C3%A1scara",
+      "destination": "/produtos/cme-hospitalar/etiqueta-n95-para-esterilizacao-de-mascara.html",
+      "permanent": true
+    },
+    {
+      "source": "/product-page/etiqueta-param%C3%BAltiplas-checagens",
+      "destination": "/produtos/rotulos-etiquetas/etiqueta-para-multiplas-checagens.html",
+      "permanent": true
+    },
+    {
+      "source": "/product-page/etiqueta-validade-congelados",
+      "destination": "/produtos/rotulos-etiquetas/etiqueta-validade-congelados.html",
+      "permanent": true
+    },
+    {
+      "source": "/product-page/etiquetas-para-personalizar",
+      "destination": "/produtos/cme-hospitalar/etiquetas-para-personalizar.html",
+      "permanent": true
+    },
+    {
+      "source": "/product-page/fita-fixadora-fecho-de-contato-velcro",
+      "destination": "/produtos/conversao-materia-prima/fita-fixadora-fecho-de-contato-velcro.html",
+      "permanent": true
+    },
+    {
+      "source": "/product-page/placas-de-identifica%C3%A7%C3%A3o",
+      "destination": "/produtos/conversao-materia-prima/placas-de-identificacao.html",
+      "permanent": true
+    },
+    {
+      "source": "/product-page/protetor-de-policarbonato-para-instrumental-cir%C3%BArgico",
+      "destination": "/produtos/cme-hospitalar/protetor-de-policarbonato-para-instrumental-cirurgico.html",
+      "permanent": true
+    },
+    {
+      "source": "/product-page/pulseiras-de-identifica%C3%A7%C3%A3o-hospitalar-para-classifica%C3%A7%C3%A3o-de-risco",
+      "destination": "/produtos/pulseiras/pulseiras-de-identificacao-hospitalar.html",
+      "permanent": true
+    },
+    {
+      "source": "/product-page/ribbon-para-impressora-t%C3%A9rmica",
+      "destination": "/produtos/cme-hospitalar/ribbon-para-impressora-termica.html",
+      "permanent": true
+    },
+    {
+      "source": "/product-page/r%C3%B3tulos-personalizados-para-embalagens",
+      "destination": "/produtos/rotulos-etiquetas/rotulos-personalizados-para-embalagens.html",
+      "permanent": true
+    },
+    {
+      "source": "/product-page/c%C3%B3pia-de-etiqueta-de-despacho-e-entrega",
+      "destination": "/produtos/rotulos-etiquetas/etiqueta-de-fracionamento.html",
+      "permanent": true
+    },
+    {
+      "source": "/product-page/etiqueta-de-despacho-e-entrega",
+      "destination": "/produtos/rotulos-etiquetas/etiqueta-de-despacho-e-entrega.html",
+      "permanent": true
+    },
+    {
+      "source": "/product-page/filtro-circular-de-papel-hidr%C3%B3fobo-para-containers",
+      "destination": "/produtos/cme-hospitalar/filtro-circular-de-papel-hidrofobo-para-containers.html",
+      "permanent": true
+    },
+    {
+      "source": "/product-page/c%C3%B3pia-de-filtro-para-cont%C3%AAiner-para-esteriliza%C3%A7%C3%A3o-retangular",
+      "destination": "/produtos/cme-hospitalar/filtro-para-conteiner-para-esterilizacao-retangular.html",
+      "permanent": true
+    },
+    {
+      "source": "/post/o-que-perguntar-ao-fornecedor-antes-de-comprar-etiquetas-para-cme",
+      "destination": "/noticias/o-que-perguntar-ao-fornecedor-antes-de-comprar-etiquetas-para-cme.html",
+      "permanent": true
+    },
+    {
+      "source": "/post/rastreabilidade-em-materiais-pequenos-por-que-o-tamanho-da-etiqueta-importa-mais-do-que-voc%C3%AA-imagin",
+      "destination": "/noticias/rastreabilidade-em-materiais-pequenos-por-que-o-tamanho-da-etiqueta-im.html",
+      "permanent": true
+    },
+    {
+      "source": "/post/o-que-hospitais-de-alta-performance-t%C3%AAm-em-comum-dentro-do-cme",
+      "destination": "/noticias/o-que-hospitais-de-alta-performance-tem-em-comum-dentro-do-cme.html",
+      "permanent": true
+    },
+    {
+      "source": "/post/controle-de-infec%C3%A7%C3%B5es-hospitalares-o-que-define-um-processo-realmente-seguro-hoje",
+      "destination": "/noticias/controle-de-infeccoes-hospitalares-o-que-define-um-processo-realmente.html",
+      "permanent": true
+    },
+    {
+      "source": "/post/o-novo-marco-regulat%C3%B3rio-do-processamento-de-produtos-para-sa%C3%BAde-em-odontologia-an%C3%A1lise-t%C3%A9cnica-da",
+      "destination": "/noticias/o-novo-marco-regulatorio-do-processamento-de-produtos-para-saude-em-od.html",
       "permanent": true
     }
   ]

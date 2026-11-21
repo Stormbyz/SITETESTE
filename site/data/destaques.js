@@ -1,22 +1,65 @@
-// MAIS VENDIDO DA SEMANA — rotação automática.
-// Como funciona: o site calcula a semana do ano (ISO) e mostra o próximo item desta lista, em rodízio.
-// A equipe só mantém a lista (ordem = ordem do rodízio). Para fixar um produto numa semana específica,
-// use "fixo": { "2026-W48": "id-do-produto" }. Nenhuma edição de página é necessária.
-// Na versão Wix: esta lista vira uma Coleção do CMS (campos: produto, ordem, ativo) e o mesmo cálculo roda em Velo.
+// MAIS VENDIDO DA SEMANA: rotação automática.
+// O site calcula a semana do ano (ISO) e mostra o próximo item desta lista, em rodízio.
+// A equipe só mantém a lista (ordem = ordem do rodízio). Para fixar um produto numa semana: fixo: { "2026-W48": "id-do-produto" }.
+// Na versão Wix: Coleção do CMS (produto, ordem, ativo) e o mesmo cálculo em Velo.
 window.GM_DESTAQUES = {
-  rodizio: [
-    { id: 'etiqueta-duplo-uso-vapor', name: 'Etiqueta duplo uso a vapor', line: 'CME Hospitalar', mock: 'roll',
-      desc: 'Indicador químico para esterilização a vapor. Uma parte fica no pacote, a outra vai para o registro do ciclo.',
-      url: 'produtos/cme-hospitalar/etiqueta-duplo-uso-vapor.html' },
-    { id: 'fita-indicadora-vapor', name: 'Fita indicadora para autoclave', line: 'CME Hospitalar', mock: 'tape',
-      desc: 'Muda de cor após o processo. Indicação visual imediata para a CME, sem etapa extra.',
-      url: 'produtos/cme-hospitalar/fita-indicadora-vapor.html' },
-    { id: 'etiqueta-duplo-uso-grafdental', name: 'Etiqueta duplo uso grafDENTAL', line: 'grafDENTAL', mock: 'roll',
-      desc: 'Registra o ciclo da autoclave do consultório e vai direto para a ficha do paciente.',
-      url: 'produtos/grafdental/etiqueta-duplo-uso-grafdental.html' },
-    { id: 'pulseira-hospitalar', name: 'Pulseira de identificação hospitalar', line: 'Pulseiras', mock: 'band',
-      desc: 'Confortável, resistente à água e a álcool, com campo imprimível para os dados do paciente.',
-      url: 'produtos/pulseiras/pulseira-hospitalar.html' }
+  "rodizio": [
+    {
+      "id": "etiqueta-duplo-uso-para-esterilizacao-a-vapor",
+      "name": "Etiqueta Duplo Uso para Esterilização a Vapor",
+      "line": "CME Hospitalar",
+      "desc": "Assegure a rastreabilidade completa em processos de autoclave a vapor.",
+      "img": "assets/img/produtos/etiqueta-duplo-uso-para-esterilizacao-a-vapor.webp",
+      "url": "produtos/cme-hospitalar/etiqueta-duplo-uso-para-esterilizacao-a-vapor.html"
+    },
+    {
+      "id": "etiqueta-duplo-uso-vpph-para-etiquetadoras",
+      "name": "Etiqueta Duplo Uso VPPH para Etiquetadoras",
+      "line": "CME Hospitalar",
+      "desc": "Otimize a identificação em processos de esterilização a baixa temperatura.",
+      "img": "assets/img/produtos/etiqueta-duplo-uso-vpph-para-etiquetadoras.webp",
+      "url": "produtos/cme-hospitalar/etiqueta-duplo-uso-vpph-para-etiquetadoras.html"
+    },
+    {
+      "id": "fita-identificadora-para-instrumental-cirurgico",
+      "name": "Fita Identificadora para Instrumental Cirúrgico",
+      "line": "CME Hospitalar",
+      "desc": "Organize e segregue instrumentais cirúrgicos com nossas fitas autoadesivas.",
+      "img": "assets/img/produtos/fita-identificadora-para-instrumental-cirurgico.webp",
+      "url": "produtos/cme-hospitalar/fita-identificadora-para-instrumental-cirurgico.html"
+    },
+    {
+      "id": "tag-duplo-uso-com-lacre-para-containers",
+      "name": "Tag Duplo uso com lacre para Containers",
+      "line": "CME Hospitalar",
+      "desc": "Identifique e lacre seus containers com nossa tag de duplo uso.",
+      "img": "assets/img/produtos/tag-duplo-uso-com-lacre-para-containers.webp",
+      "url": "produtos/cme-hospitalar/tag-duplo-uso-com-lacre-para-containers.html"
+    },
+    {
+      "id": "etiquetas-adesivas-para-seringas",
+      "name": "Etiquetas Adesivas para Seringas",
+      "line": "CME Hospitalar",
+      "desc": "Promova a administração segura de medicamentos com nossas etiquetas para seringas.",
+      "img": "assets/img/produtos/etiquetas-adesivas-para-seringas.webp",
+      "url": "produtos/cme-hospitalar/etiquetas-adesivas-para-seringas.html"
+    },
+    {
+      "id": "pulseiras-de-identificacao-hospitalar",
+      "name": "Pulseiras de Identificação Hospitalar",
+      "line": "Pulseiras de Identificação",
+      "desc": "Agilize o atendimento e aumente a segurança do paciente com nossas pulseiras de identificação.",
+      "img": "assets/img/produtos/pulseiras-de-identificacao-hospitalar.webp",
+      "url": "produtos/pulseiras/pulseiras-de-identificacao-hospitalar.html"
+    },
+    {
+      "id": "etiqueta-grafdental-duplo-uso-esterilizacao-a-vapor",
+      "name": "Etiqueta grafDENTAL Duplo Uso para Esterilização a Vapor",
+      "line": "grafDENTAL",
+      "desc": "Etiqueta com indicador químico Tipo 1 para a autoclave do consultório, conforme a RDC 1002. O indicador muda de azul para marrom após o processo.",
+      "img": "assets/img/fotos/grafdental-pacote.webp",
+      "url": "produtos/grafdental/etiqueta-grafdental-duplo-uso-esterilizacao-a-vapor.html"
+    }
   ],
-  fixo: {}
+  "fixo": {}
 };

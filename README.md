@@ -61,7 +61,7 @@ Textos, produtos, FAQ e contatos ficam em `src/`. Depois de editar, gere o site 
 ```bash
 node src/build.mjs
 ```
-Depois recarregue o navegador. Os arquivos `site/data/destaques.js` (mais vendido da semana) e `site/data/parceiros.js` (parceiros credenciados) podem ser editados direto, sem gerar de novo.
+Depois recarregue o navegador. Os arquivos `site/data/banners.js` (banners das páginas), `site/data/destaques.js` (mais vendido da semana) e `site/data/parceiros.js` (parceiros credenciados) podem ser editados direto, sem gerar o site de novo.
 
 ### Problemas comuns
 
@@ -77,56 +77,51 @@ Depois recarregue o navegador. Os arquivos `site/data/destaques.js` (mais vendid
 
 | Pasta / arquivo | O que é |
 |---|---|
-| `src/data.mjs` | Linhas, produtos, FAQ, depoimentos, artigos, redirecionamentos 301 |
-| `src/config.mjs` | WhatsApp, e-mail, endereço, mapa, endpoint de formulário, rastreamento |
-| `src/mock.mjs` | Mockups vetoriais dos produtos (bobina, fita, rótulo, pulseira), logo e selo |
+| `src/products.json` | 34 produtos reais: textos, uso, diferenciais, medidas e especificações extraídos do site atual, mais a linha grafDENTAL do Drive da marca |
+| `src/articles.json` | 5 artigos do blog atual, com texto completo |
+| `src/data.mjs` | Linhas, FAQ, etapas do ciclo, depoimentos, redirecionamentos 301 |
+| `src/config.mjs` | WhatsApp, telefone, e-mail, endereço (dados do site atual), mapa, rastreamento |
 | `src/build.mjs` | Templates das páginas, gera `site/` + `sitemap.xml`, `robots.txt`, `_redirects`, `vercel.json` |
-| `site/data/destaques.js` | **Mais vendido da semana**: lista do rodízio (editável pela equipe) |
-| `site/data/parceiros.js` | **Parceiros credenciados** (editável pela equipe) |
-| `site/assets/js/app.js` | Interações: orçamento, formulários, simulador, prévias, filtros |
-| `site/assets/js/tracking.js` | Google Ads AW-674888037 + GA4 G-3FPHZXN63W (desligado até a publicação) |
+| `site/data/banners.js` | **Banners de todas as páginas** (carrossel da Home e um banner por página), editáveis pela equipe |
+| `site/data/destaques.js` | **Mais vendido da semana** (rodízio automático por semana) |
+| `site/data/parceiros.js` | **Parceiros credenciados** |
+| `site/assets/img/` | Logo oficial (colorida e branca), logos de clientes, fotos de produto e de aplicação, indicador antes e depois |
 
-## O que o briefing pediu e onde está
+## Direção visual aplicada
 
-- **Menu do topo curto**: Produtos (linhas + Conversão + Projetos) · Notícias (Artigos técnicos, Eventos e feiras) · Contato · Orçamento com contador · **Fale com um especialista** (WhatsApp, com alerta pulsante, fixo no topo e no banner).
-- **Menu do rodapé**: Quem somos, Canal Parceiro, Trabalhe conosco, FAQ, Qualidade, Privacidade.
-- **Todo botão abre o WhatsApp** com mensagem já preenchida conforme a página ou o produto.
-- **Formulário de contato secundário**: Nome → E-mail → Telefone, um campo por vez, sem etapas à vista. Fica atrás do botão de WhatsApp.
-- **Layout**: fonte fina (Plus Jakarta Sans 300 + Instrument Serif itálico nos destaques), laranja só em detalhes e chamadas, sem colmeias, fundo claro.
-- **Home em ~3 dobras**: hero com simulador do indicador, linhas de produto, destaque da semana, prova social e FAQ.
-- **Produtos**: 3 por linha, com respiro. Na página: nome, descrição e botões visíveis; Uso, Características e Diferenciais fechados; só medidas em estoque; chamada para medida personalizada; vapor e PPH com alternância **Impressa / Em branco**; aba **Etiquetas coloridas**.
-- **Original grafMED**: chamada curta com selo nas linhas CME e grafDENTAL e nos produtos mais copiados. Não cita concorrentes.
-- **Conversão**: fluxo de 4 etapas animado (aprovado), benefícios, cases e materiais (cada material abre o WhatsApp).
-- **Projetos**: uma chamada só, com formulário de campo livre e botão de WhatsApp ao lado. Sem fases e sem exemplos.
-- **Orçamento**: carrinho sem preço com quantidade, medida e cor; revisão; campos da seção 7.2; envio estruturado por WhatsApp ou e-mail; página **/obrigado.html**.
-- **SEO/AEO**: títulos e descrições por página, schema Organization, Product, FAQPage e Article, sitemap, robots e mapa 301.
-- **LGPD**: aviso de cookies; o rastreamento só carrega com consentimento.
+- Logo oficial em todas as aplicações (versão branca sobre o laranja).
+- Somente Montserrat, variando pesos (300 a 800) e cores.
+- Cantos pouco arredondados, com bordas finas. Sem travessões nos textos.
+- Gradiente laranja da marca em banners, destaque da semana, chamadas e rodapé, com as linhas finas das peças de Instagram.
+- Fundos em branco e creme, sem vários tons de cinza.
+- Cards em formato de etiqueta (picote com recortes laterais e selo da linha); no hover aparece "+ Adicionar ao orçamento".
+- Fotos reais de produto, instrumentais, autoclave e CME. Logos de clientes iguais aos do site atual.
 
-## Interatividade e mockups
+## Interatividade e animação
 
-- Simulador de ciclo de esterilização (Home): arrastar muda a cor do indicador e a temperatura e destaca a parte do prontuário.
-- Prévia de pulseira (cor + texto) e de rótulo (marca, material, cor). A prévia vai junto na mensagem do WhatsApp.
-- Inclinação 3D nos mockups, revelação ao rolar, faixa de logos, contador animado do orçamento.
-
-> Os mockups são **ilustrações vetoriais de placeholder**, não imagens de IA. Na publicação, entram as fotos reais do catálogo (Drive da SPiCOM8), sempre com o produto como elemento dominante.
+- Carrossel de banners na Home (troca automática, setas, toque).
+- Simulador do indicador químico Tipo 1 com as fotos reais da etiqueta (rosa antes, marrom depois), controlado pelo arraste ou pela rolagem.
+- Seção "O ciclo completo" fixa na tela: as etapas e as fotos mudam conforme a rolagem.
+- Produto do destaque gira em 3D com a rolagem; banners e cards inclinam em 3D com o mouse.
+- Zoom na foto do produto, filtro por tipo (Vapor, VPPH, Indicador Tipo 1), produto "voando" para o orçamento, contadores animados, barra de progresso de leitura.
 
 ## Pendências antes de publicar
 
-1. Número oficial do WhatsApp, e-mail, telefone e CNPJ em `src/config.mjs`.
-2. Logo oficial (o SVG atual é uma reconstrução) e arte final dos selos.
-3. Lista oficial de produtos e **medidas em estoque** (hoje marcadas como "a confirmar").
-4. Fotos reais do catálogo, logos de clientes e depoimentos autorizados.
-5. Lista inicial de parceiros credenciados.
-6. Endereço e mapa do galpão do Jaraguá (`mapEmbed`). O mapa só aparece quando o campo estiver preenchido.
+1. Confirmar se (11) 94561-0928 é o WhatsApp comercial.
+2. Lista de medidas em estoque: hoje são as do site atual. A grafMED envia a lista final.
+3. Fotos sem caixa de papelão para Etiqueta de Fracionamento e Etiqueta de Despacho (estão com aviso "foto em produção").
+4. Depoimentos autorizados e lista inicial de parceiros credenciados.
+5. Arte final dos selos "Original grafMED".
+6. Endereço e mapa do galpão do Jaraguá (`mapEmbed`).
 7. Endpoint de formulário (`formEndpoint`). Sem ele, o envio abre o e-mail do visitante.
 8. Rótulos das conversões do Google Ads, `tracking.enabled = true` e validação no Tag Assistant.
-9. Revisar o mapa 301 com o export de URLs indexadas do site atual.
-10. Revisão jurídica do Canal Parceiro e da Política de privacidade.
+9. Revisar o mapa 301 (já inclui as páginas, os produtos e os artigos atuais).
 
 ## Levando para o Wix (editor novo)
 
 | Aqui | No Wix |
 |---|---|
+| `banners.js` (banner de cada página) | Coleção CMS "Banners" (página, ordem, imagem, título, texto, botão, link) |
 | `destaques.js` (rodízio por semana ISO) | Coleção CMS "Destaques" + código Velo com o mesmo cálculo de semana |
 | `parceiros.js` | Coleção CMS "Parceiros" + repetidor |
 | Notícias | Blog nativo (categorias Artigos técnicos e Eventos e feiras) |
