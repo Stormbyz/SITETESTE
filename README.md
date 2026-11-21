@@ -2,17 +2,75 @@
 
 Site em HTML, CSS e JS puros, gerado a partir de `src/`. Segue o **Briefing de Webdesign (set/2026)** e as **mudanças de 10/11/2026**. Quando os dois divergem, valem as mudanças de novembro.
 
-## Como rodar
+## Como abrir o site no navegador
 
+O site já vem pronto na pasta `site/`. Para só ver o site, **não precisa instalar nada**.
+
+### Passo 1: baixar o projeto
+
+**Sem usar git (mais simples)**
+1. Abra https://github.com/Stormbyz/SITETESTE no navegador.
+2. Troque o branch para **`claude/funny-euler-taf1gw`** no seletor de branch (canto superior esquerdo, onde está escrito `main` ou o nome do branch).
+3. Clique no botão verde **Code** e depois em **Download ZIP**.
+4. Extraia o ZIP. No Windows: botão direito no arquivo → **Extrair tudo…**.
+
+**Com git**
+```bash
+git clone -b claude/funny-euler-taf1gw https://github.com/Stormbyz/SITETESTE.git
+```
+
+### Passo 2: abrir
+
+**Opção A: abrir direto, sem instalar nada**
+
+Entre na pasta extraída, depois na pasta `site`, e dê dois cliques em **`index.html`**. O site abre no navegador e dá para navegar por todas as páginas.
+
+Neste modo, alguns navegadores não guardam os itens do orçamento entre uma página e outra. Para testar o orçamento completo, use a opção B.
+
+**Opção B: servidor local (recomendado, funciona 100%)**
+
+Escolha **uma** das formas abaixo.
+
+*Com Python* (no Windows, instale em https://www.python.org/downloads/ marcando **"Add Python to PATH"**; no Mac ele já vem instalado):
+1. Abra a pasta `site`.
+2. Abra um terminal nessa pasta. No Windows: clique na barra de endereço da pasta, digite `cmd` e aperte Enter. No Mac: botão direito na pasta → **Novo Terminal na Pasta**.
+3. Rode o comando:
+   ```bash
+   python -m http.server 8080
+   ```
+   No Mac, se `python` não for reconhecido, use `python3`.
+4. Abra **http://localhost:8080** no navegador.
+5. Para desligar o servidor, volte ao terminal e aperte `Ctrl + C`.
+
+*Com Node.js* (instale em https://nodejs.org, versão LTS):
+1. Abra um terminal dentro da pasta `site`.
+2. Rode o comando:
+   ```bash
+   npx serve .
+   ```
+3. Abra o endereço que aparecer no terminal (normalmente **http://localhost:3000**).
+
+*Com VS Code:*
+1. Instale a extensão **Live Server** no VS Code.
+2. Abra a pasta `site` no VS Code (**Arquivo → Abrir pasta**).
+3. Clique com o botão direito em `index.html` → **Open with Live Server**.
+
+### Se você editar o conteúdo
+
+Textos, produtos, FAQ e contatos ficam em `src/`. Depois de editar, gere o site de novo. Para isso, você precisa ter o Node.js instalado. Abra um terminal na pasta principal do projeto (não na `site`) e rode:
 ```bash
 node src/build.mjs
 ```
+Depois recarregue o navegador. Os arquivos `site/data/destaques.js` (mais vendido da semana) e `site/data/parceiros.js` (parceiros credenciados) podem ser editados direto, sem gerar de novo.
 
-```bash
-cd site && python3 -m http.server 8080
-```
+### Problemas comuns
 
-Depois abra http://localhost:8080. Os links são relativos, então o site também abre direto do disco ou de qualquer subpasta.
+| Problema | O que fazer |
+|---|---|
+| `python` não é reconhecido | Reinstale o Python marcando **Add Python to PATH**, ou use `py -m http.server 8080` |
+| Porta 8080 em uso | Use outra porta: `python -m http.server 5500` e abra http://localhost:5500 |
+| Página sem estilo / fonte diferente | Confira se abriu a partir da pasta `site`. A fonte vem do Google Fonts e precisa de internet |
+| Botões de WhatsApp vão para um número errado | O número ainda é provisório: troque `whatsapp` em `src/config.mjs` e rode `node src/build.mjs` |
 
 ## Estrutura
 
