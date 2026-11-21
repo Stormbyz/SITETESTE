@@ -68,6 +68,7 @@ Depois recarregue o navegador. Os arquivos `site/data/destaques.js` (mais vendid
 | Problema | O que fazer |
 |---|---|
 | `python` não é reconhecido | Reinstale o Python marcando **Add Python to PATH**, ou use `py -m http.server 8080` |
+| PowerShell: "npx.ps1 não pode ser carregado… execução de scripts foi desabilitada" | Rode `npx.cmd serve .` no lugar de `npx serve .`, ou use o Prompt de Comando (`cmd`) em vez do PowerShell |
 | Porta 8080 em uso | Use outra porta: `python -m http.server 5500` e abra http://localhost:5500 |
 | Página sem estilo / fonte diferente | Confira se abriu a partir da pasta `site`. A fonte vem do Google Fonts e precisa de internet |
 | Botões de WhatsApp vão para um número errado | O número ainda é provisório: troque `whatsapp` em `src/config.mjs` e rode `node src/build.mjs` |
