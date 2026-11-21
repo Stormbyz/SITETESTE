@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /orcamento.html
+Disallow: /obrigado.html
+Sitemap: https://www.grafmed.ind.br/sitemap.xml

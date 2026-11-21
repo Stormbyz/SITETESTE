@@ -1,0 +1,49 @@
+{
+  "redirects": [
+    {
+      "source": "/logistica",
+      "destination": "/produtos/rotulos-etiquetas.html",
+      "permanent": true
+    },
+    {
+      "source": "/distribuidores",
+      "destination": "/canal-parceiro.html",
+      "permanent": true
+    },
+    {
+      "source": "/artigos-e-noticias",
+      "destination": "/noticias.html",
+      "permanent": true
+    },
+    {
+      "source": "/servicos-e-oem",
+      "destination": "/produtos/conversao-materia-prima.html",
+      "permanent": true
+    },
+    {
+      "source": "/quem-somos",
+      "destination": "/quem-somos.html",
+      "permanent": true
+    },
+    {
+      "source": "/hospitalar",
+      "destination": "/produtos/cme-hospitalar.html",
+      "permanent": true
+    },
+    {
+      "source": "/odontologico",
+      "destination": "/produtos/grafdental.html",
+      "permanent": true
+    },
+    {
+      "source": "/pulseiras",
+      "destination": "/produtos/pulseiras.html",
+      "permanent": true
+    },
+    {
+      "source": "/contato",
+      "destination": "/contato.html",
+      "permanent": true
+    }
+  ]
+}
