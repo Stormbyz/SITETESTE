@@ -661,7 +661,6 @@ ${pageHero(r, 'conversao-materia-prima', { crumbs: [['Produtos', 'produtos/index
 
 <section class="section"><div class="wrap">
   <div class="sec-head center">${eyebrow('Como funciona · 4 etapas')}<h2 class="h2">Do rolo ao kit, <strong>sem passar pela sua linha.</strong></h2></div>
-  <figure class="conv-illu reveal"><img src="${r('assets/img/fotos/conversao-etapas.webp')}" alt="Etapas da conversão grafMED: recebimento, processamento, embalagem e expedição" loading="lazy"></figure>
   <ol class="flow" data-flow>
     ${[['roll', 'Você envia', 'Bobina ou rolo de matéria-prima.'], ['cut', 'grafMED processa', 'Corte, montagem e acabamento.'], ['box', 'Kit embalado', 'Unitário ou em lote.'], ['truck', 'Entrega', 'Pronto para uso ou revenda.']]
       .map(([i, t, d], n) => `<li class="flow-step" data-flow-step><span class="flow-ico">${ico(i, 34)}</span><span class="flow-n">0${n + 1}</span><h3>${t}</h3><p>${d}</p></li>`)
