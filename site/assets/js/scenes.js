@@ -86,7 +86,8 @@
   function indicator(root) {
     const stage = $('[data-ind-stage]', root);
     const pull = $('[data-pull]', root);
-    const cord = $('[data-cord]', root);
+    const track = $('[data-track]', root);
+    const line = $('[data-sweep-line]', root);
     const temp = $('[data-ind-temp]', root);
     const status = $('[data-ind-status]', root);
     const bar = $('[data-ind-bar]', root);
@@ -114,7 +115,7 @@
         cc.drawImage(strip, x0, 0);
       }
     };
-    const msgs = ['Puxe a linha para iniciar o ciclo a vapor.', 'Aquecendo a câmara da autoclave.', 'Esterilizando: o indicador está reagindo.', 'Quase lá: a faixa escurece.', 'Ciclo concluído. Faixa marrom: material processado e rastreado.'];
+    const msgs = ['Arraste a linha para a direita para iniciar o ciclo a vapor.', 'Aquecendo a câmara da autoclave.', 'Esterilizando: o indicador está reagindo.', 'Quase lá: a faixa escurece.', 'Ciclo concluído. Faixa marrom: material processado e rastreado.'];
     const ui = () => {
       const deg = Math.round(p < 0.15 ? 25 + p * 300 : Math.min(134, 70 + p * 80));
       temp.textContent = `${deg} °C`;
@@ -123,17 +124,24 @@
       status.classList.toggle('ok', i === 4);
       root.classList.toggle('done', i === 4);
       bar.style.setProperty('--p', p);
-      pull.style.setProperty('--pull', `${p * 70}px`);
-      cord.style.setProperty('--pull', `${p * 70}px`);
+      track.style.setProperty('--p', p);
+      { const tr = track.getBoundingClientRect(), sr = stage.getBoundingClientRect(); line.style.left = `${tr.left - sr.left + p * tr.width}px`; line.classList.toggle('past', p > 0.5); }
+      pull.setAttribute('aria-valuenow', Math.round(p * 100));
     };
 
-    // corda / alça de puxar
-    let dragY = null, startP = 0;
-    pull.addEventListener('pointerdown', (e) => { dragY = e.clientY; startP = target; pull.setPointerCapture(e.pointerId); root.classList.add('pulling'); });
-    pull.addEventListener('pointermove', (e) => { if (dragY === null) return; target = clamp(startP + (e.clientY - dragY) / 70); });
-    const end = () => { if (dragY === null) return; dragY = null; root.classList.remove('pulling'); if (target > 0.55) target = 1; };
-    pull.addEventListener('pointerup', end); pull.addEventListener('pointercancel', end);
-    pull.addEventListener('keydown', (e) => { if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') { e.preventDefault(); target = clamp(target + (e.key === 'ArrowDown' ? 0.1 : 1)); } if (e.key === 'ArrowUp') target = clamp(target - 0.1); });
+    // linha horizontal: arraste da esquerda (antes) para a direita (depois)
+    let dragging = false;
+    const fromX = (x) => { const r = track.getBoundingClientRect(); return clamp((x - r.left) / r.width); };
+    track.addEventListener('pointerdown', (e) => { dragging = true; track.setPointerCapture(e.pointerId); root.classList.add('pulling'); target = fromX(e.clientX); });
+    track.addEventListener('pointermove', (e) => { if (dragging) target = fromX(e.clientX); });
+    const end = () => { dragging = false; root.classList.remove('pulling'); };
+    track.addEventListener('pointerup', end); track.addEventListener('pointercancel', end);
+    pull.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowUp') { e.preventDefault(); target = clamp(target + 0.1); }
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') { e.preventDefault(); target = clamp(target - 0.1); }
+      if (e.key === 'End' || e.key === 'Enter') target = 1;
+      if (e.key === 'Home') target = 0;
+    });
     $('[data-ind-play]', root).addEventListener('click', () => { target = 0; p = 0; setTimeout(() => { target = 1; }, 250); });
     $('[data-ind-reset]', root).addEventListener('click', () => { target = 0; });
 
@@ -211,7 +219,7 @@
     const frame = (t) => {
       if (!running) return;
       const dt = Math.min(0.05, (t - t0) / 1000); t0 = t;
-      p += (target - p) * Math.min(1, dt * 2.4);
+      p += (target - p) * Math.min(1, dt * (dragging ? 12 : 2.4));
       if (Math.abs(p - lastP) > 0.0005) { compose(); tex.needsUpdate = true; ui(); lastP = p; }
       rotX += (tRotX + (drag ? 0 : hover.y * 0.12) - rotX) * 0.08;
       rotY += (tRotY + (drag ? 0 : hover.x * 0.25) + (reduce || drag || tFocus ? 0 : Math.sin(t / 2600) * 0.05) - rotY) * 0.08;
@@ -403,6 +411,9 @@
       mesh = new T.Mesh(g, [faceMat, sideMat]);
       scene.add(mesh);
     };
+    let idleUntil = 0;
+    const hold = () => { idleUntil = performance.now() + 5000; };
+    ['input', 'change', 'pointerdown', 'focusin'].forEach((ev) => root.addEventListener(ev, hold));
     root.addEventListener('input', build);
     root.addEventListener('change', build);
     let rx = 0.15, ry = -0.5, trx = 0.15, try_ = -0.5, drag = null;
@@ -414,7 +425,7 @@
     let running = false;
     const frame = (t) => {
       if (!running) return;
-      if (!drag && !reduce) try_ += 0.004;
+      if (!drag && !reduce && t > idleUntil) try_ += 0.0012;
       rx += (trx - rx) * 0.1; ry += (try_ - ry) * 0.1;
       if (mesh) { mesh.rotation.set(rx, ry, 0); mesh.position.y = reduce ? 0 : Math.sin(t / 1300) * 0.08; }
       renderer.render(scene, cam);

@@ -518,17 +518,53 @@
     }
   }
 
-  /* ---------- Zoom na foto do produto ---------- */
-  const zoom = $('[data-zoom]');
-  if (zoom && fine && $('img', zoom)) {
-    zoom.addEventListener('pointerenter', () => zoom.classList.add('zoom'));
-    zoom.addEventListener('pointerleave', () => zoom.classList.remove('zoom'));
-    zoom.addEventListener('pointermove', (e) => {
-      const r = zoom.getBoundingClientRect();
-      zoom.style.setProperty('--zx', ((e.clientX - r.left) / r.width) * 100 + '%');
-      zoom.style.setProperty('--zy', ((e.clientY - r.top) / r.height) * 100 + '%');
+  /* ---------- Galeria do produto: slides, miniaturas e zoom ---------- */
+  const gal = $('[data-gallery]');
+  if (gal) {
+    const slides = $$('.g-slide', gal);
+    const thumbs = $$('[data-gthumb]');
+    let gi = 0;
+    const show = (n) => {
+      gi = (n + slides.length) % slides.length;
+      slides.forEach((s, k) => s.classList.toggle('on', k === gi));
+      thumbs.forEach((t, k) => t.setAttribute('aria-selected', String(k === gi)));
+    };
+    const prev = $('[data-gprev]', gal), next = $('[data-gnext]', gal);
+    if (prev) prev.addEventListener('click', () => show(gi - 1));
+    if (next) next.addEventListener('click', () => show(gi + 1));
+    thumbs.forEach((t) => t.addEventListener('click', () => show(+t.dataset.gthumb)));
+    let x0 = null;
+    gal.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+    gal.addEventListener('touchend', (e) => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) show(gi + (dx < 0 ? 1 : -1)); x0 = null; });
+    if (fine) slides.forEach((z) => {
+      z.addEventListener('pointerenter', () => z.classList.add('zoom'));
+      z.addEventListener('pointerleave', () => z.classList.remove('zoom'));
+      z.addEventListener('pointermove', (e) => { const r = z.getBoundingClientRect(); z.style.setProperty('--zx', ((e.clientX - r.left) / r.width) * 100 + '%'); z.style.setProperty('--zy', ((e.clientY - r.top) / r.height) * 100 + '%'); });
     });
   }
+
+  /* ---------- Antes e depois do indicador (arrastar na horizontal) ---------- */
+  $$('[data-ba]').forEach((ba) => {
+    const range = $('.ba-range', ba);
+    const set = (v) => { ba.style.setProperty('--p', v + '%'); ba.style.setProperty('--o', Math.min(1, Math.max(0, (v - 15) / 70))); };
+    range.addEventListener('input', () => { ba.dataset.touched = '1'; set(range.value); });
+    if (!reduce && 'IntersectionObserver' in window) {
+      new IntersectionObserver((es, o) => es.forEach((e) => {
+        if (!e.isIntersecting) return;
+        o.disconnect();
+        const t0 = performance.now();
+        const step = (t) => {
+          if (ba.dataset.touched) return;
+          const k = Math.min(1, (t - t0) / 1800);
+          const v = 92 - 84 * (0.5 - Math.cos(k * Math.PI) / 2);
+          range.value = v; set(v);
+          if (k < 1) requestAnimationFrame(step);
+          else setTimeout(() => { if (!ba.dataset.touched) { range.value = 50; set(50); } }, 900);
+        };
+        requestAnimationFrame(step);
+      }), { threshold: 0.5 }).observe(ba);
+    }
+  });
 
   /* ---------- Fluxo da conversão ---------- */
   const flow = $('[data-flow]');

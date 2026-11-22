@@ -39,7 +39,7 @@ window.GM_BANNERS = {
       tema: 'laranja',
       botao: 'Ver fitas', link: 'produtos/cme-hospitalar/fita-identificadora-para-instrumental-cirurgico.html',
       camadas: [
-        { img: 'assets/img/recorte/x-micro-etiqueta-com-qr-code.webp', x: 80, y: 40, w: 30, z: 2, rot: 8 },
+        { img: 'assets/img/recorte/x-micro-qr.webp', x: 82, y: 40, w: 22, z: 2, rot: 6 },
         { img: 'assets/img/recorte/x-fita-identificadora-para-instrumental-cirurgico.webp', x: 46, y: 46, w: 70, z: 3, rot: -4 },
         { img: 'assets/img/recorte/x-protetor-de-policarbonato-para-instrumental-cirurgico.webp', x: 30, y: 78, w: 40, z: 5, rot: -10 },
       ],
@@ -66,11 +66,11 @@ window.GM_BANNERS = {
   'rotulos-etiquetas': {
     tema: 'laranja',
     camadas: [
-      { img: 'assets/img/recorte/etiqueta-lacre-de-seguranca.webp', x: 76, y: 28, w: 40, z: 2, rot: 8 },
-      { img: 'assets/img/recorte/x-app-rolinho.webp', x: 32, y: 36, w: 40, z: 1, rot: -8 },
-      { img: 'assets/img/recorte/etiquetas-para-personalizar.webp', x: 52, y: 66, w: 60, z: 4, rot: -2 },
+      { img: 'assets/img/recorte/x-gondola.webp', x: 30, y: 26, w: 40, z: 1, rot: -6 },
+      { img: 'assets/img/recorte/x-void.webp', x: 76, y: 28, w: 38, z: 2, rot: 6 },
+      { img: 'assets/img/recorte/x-rotulos.webp', x: 52, y: 64, w: 56, z: 4, rot: 0 },
     ],
-    selos: [{ texto: 'Lacres, validade e QR Code', x: 4, y: 84 }],
+    selos: [{ texto: 'Rótulos, lacres e etiquetas', x: 4, y: 88 }],
   },
   pulseiras: {
     tema: 'claro',

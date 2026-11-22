@@ -108,6 +108,12 @@ Depois recarregue o navegador. Os arquivos `site/data/banners.js` (banners das p
 
 As cenas 3D usam o Three.js salvo em `site/assets/vendor` e texturas desenhadas no navegador, então funcionam também abrindo o `index.html` direto do disco. Sem suporte a 3D, o navegador mostra uma versão plana equivalente.
 
+## Imagens
+
+- Fotos de produto sem fundo e padronizadas em `site/assets/img/recorte`; galerias com várias imagens por produto em `site/assets/img/galeria` (fotos de aplicação terminam em `-foto`).
+- Origem: catálogo grafMED (arquivos "Ativo" do Drive), site atual e site de referência no Wix.
+- Fundos com o padrão oficial de hexágonos da marca em `site/assets/img/hex` (traço branco sobre o laranja e laranja sobre o branco).
+
 ## Pendências antes de publicar
 
 1. Confirmar se (11) 94561-0928 é o WhatsApp comercial.

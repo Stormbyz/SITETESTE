@@ -21,7 +21,10 @@
   "img": "assets/img/recorte/bercos-ou-placas-em-espuma-de-poliuretano.webp",
   "featured": false,
   "tags": [],
-  "source": "https://www.grafmed.ind.br/product-page/berços-em-polyurethane-foam"
+  "source": "https://www.grafmed.ind.br/product-page/berços-em-polyurethane-foam",
+  "imgs": [
+   "assets/img/recorte/bercos-ou-placas-em-espuma-de-poliuretano.webp"
+  ]
  },
  {
   "id": "etiqueta-de-fracionamento",
@@ -42,10 +45,13 @@
     "Medidas de acordo com às necessidade do cliente. Pode ser usada em qualquer tipo de embalagem."
    ]
   ],
-  "img": null,
+  "img": "assets/img/recorte/etiqueta-de-fracionamento.webp",
   "featured": false,
   "tags": [],
-  "source": "https://www.grafmed.ind.br/product-page/cópia-de-etiqueta-de-despacho-e-entrega"
+  "source": "https://www.grafmed.ind.br/product-page/cópia-de-etiqueta-de-despacho-e-entrega",
+  "imgs": [
+   "assets/img/recorte/etiqueta-de-fracionamento.webp"
+  ]
  },
  {
   "id": "filtro-para-conteiner-para-esterilizacao-retangular",
@@ -76,7 +82,10 @@
    "Vapor",
    "Indicador Tipo 1"
   ],
-  "source": "https://www.grafmed.ind.br/product-page/cópia-de-filtro-para-contêiner-para-esterilização-retangular"
+  "source": "https://www.grafmed.ind.br/product-page/cópia-de-filtro-para-contêiner-para-esterilização-retangular",
+  "imgs": [
+   "assets/img/recorte/filtro-para-conteiner-para-esterilizacao-retangular.webp"
+  ]
  },
  {
   "id": "data-de-fabricacao-validade-delivery",
@@ -100,7 +109,11 @@
   "img": "assets/img/recorte/data-de-fabricacao-validade-delivery.webp",
   "featured": false,
   "tags": [],
-  "source": "https://www.grafmed.ind.br/product-page/data-de-fabricação-validade-delivery"
+  "source": "https://www.grafmed.ind.br/product-page/data-de-fabricação-validade-delivery",
+  "imgs": [
+   "assets/img/recorte/data-de-fabricacao-validade-delivery.webp",
+   "assets/img/galeria/data-de-fabricacao-validade-delivery-1.webp"
+  ]
  },
  {
   "id": "etiqueta-data-de-validade-delivery",
@@ -124,7 +137,10 @@
   "img": "assets/img/recorte/etiqueta-data-de-validade-delivery.webp",
   "featured": false,
   "tags": [],
-  "source": "https://www.grafmed.ind.br/product-page/etiqueta-adesiva-data-de-validade-delivery"
+  "source": "https://www.grafmed.ind.br/product-page/etiqueta-adesiva-data-de-validade-delivery",
+  "imgs": [
+   "assets/img/recorte/etiqueta-data-de-validade-delivery.webp"
+  ]
  },
  {
   "id": "etiqueta-lacre-de-garantia-para-delivery",
@@ -148,7 +164,11 @@
   "img": "assets/img/recorte/etiqueta-lacre-de-garantia-para-delivery.webp",
   "featured": false,
   "tags": [],
-  "source": "https://www.grafmed.ind.br/product-page/etiqueta-adesiva-lacre-de-garantia-para-delivery"
+  "source": "https://www.grafmed.ind.br/product-page/etiqueta-adesiva-lacre-de-garantia-para-delivery",
+  "imgs": [
+   "assets/img/recorte/etiqueta-lacre-de-garantia-para-delivery.webp",
+   "assets/img/galeria/etiqueta-lacre-de-garantia-para-delivery-1.webp"
+  ]
  },
  {
   "id": "etiqueta-adesiva-o-s-delivery",
@@ -172,7 +192,11 @@
   "img": "assets/img/recorte/etiqueta-adesiva-o-s-delivery.webp",
   "featured": false,
   "tags": [],
-  "source": "https://www.grafmed.ind.br/product-page/etiqueta-adesiva-os-para-delivery"
+  "source": "https://www.grafmed.ind.br/product-page/etiqueta-adesiva-os-para-delivery",
+  "imgs": [
+   "assets/img/recorte/etiqueta-adesiva-o-s-delivery.webp",
+   "assets/img/galeria/etiqueta-adesiva-o-s-delivery-1.webp"
+  ]
  },
  {
   "id": "etiqueta-qr-code-para-delivery",
@@ -196,7 +220,11 @@
   "img": "assets/img/recorte/etiqueta-qr-code-para-delivery.webp",
   "featured": false,
   "tags": [],
-  "source": "https://www.grafmed.ind.br/product-page/etiqueta-adesiva-qr-code-para-delivery"
+  "source": "https://www.grafmed.ind.br/product-page/etiqueta-adesiva-qr-code-para-delivery",
+  "imgs": [
+   "assets/img/recorte/etiqueta-qr-code-para-delivery.webp",
+   "assets/img/galeria/etiqueta-qr-code-para-delivery-1.webp"
+  ]
  },
  {
   "id": "etiqueta-colorida-para-esterilizacao",
@@ -227,7 +255,13 @@
    "Vapor",
    "Indicador Tipo 1"
   ],
-  "source": "https://www.grafmed.ind.br/product-page/etiqueta-colorida-para-esterilização"
+  "source": "https://www.grafmed.ind.br/product-page/etiqueta-colorida-para-esterilização",
+  "imgs": [
+   "assets/img/recorte/etiqueta-colorida-para-esterilizacao.webp",
+   "assets/img/galeria/etiqueta-colorida-para-esterilizacao-2-foto.webp",
+   "assets/img/galeria/etiqueta-colorida-para-esterilizacao-3-foto.webp",
+   "assets/img/galeria/etiqueta-colorida-para-esterilizacao-4-foto.webp"
+  ]
  },
  {
   "id": "etiqueta-de-despacho-e-entrega",
@@ -248,10 +282,14 @@
     "Medidas de acordo com às necessidade do cliente. Pode ser usada em qualquer tipo de embalagem."
    ]
   ],
-  "img": null,
+  "img": "assets/img/recorte/etiqueta-de-despacho-e-entrega.webp",
   "featured": false,
   "tags": [],
-  "source": "https://www.grafmed.ind.br/product-page/etiqueta-de-despacho-e-entrega"
+  "source": "https://www.grafmed.ind.br/product-page/etiqueta-de-despacho-e-entrega",
+  "imgs": [
+   "assets/img/recorte/etiqueta-de-despacho-e-entrega.webp",
+   "assets/img/galeria/etiqueta-de-despacho-e-entrega-1-foto.webp"
+  ]
  },
  {
   "id": "etiqueta-duplo-uso-para-esterilizacao",
@@ -290,7 +328,13 @@
    "VPPH",
    "Indicador Tipo 1"
   ],
-  "source": "https://www.grafmed.ind.br/product-page/etiqueta-dupla-camada-adesiva"
+  "source": "https://www.grafmed.ind.br/product-page/etiqueta-dupla-camada-adesiva",
+  "imgs": [
+   "assets/img/recorte/etiqueta-duplo-uso-para-esterilizacao.webp",
+   "assets/img/galeria/etiqueta-duplo-uso-para-esterilizacao-2.webp",
+   "assets/img/galeria/etiqueta-duplo-uso-para-esterilizacao-3.webp",
+   "assets/img/galeria/etiqueta-duplo-uso-para-esterilizacao-4.webp"
+  ]
  },
  {
   "id": "etiqueta-dupla-camada-adesiva-duplo-uso",
@@ -314,7 +358,10 @@
   "img": "assets/img/recorte/etiqueta-dupla-camada-adesiva-duplo-uso.webp",
   "featured": false,
   "tags": [],
-  "source": "https://www.grafmed.ind.br/product-page/etiqueta-dupla-camada-adesiva-duplo-uso"
+  "source": "https://www.grafmed.ind.br/product-page/etiqueta-dupla-camada-adesiva-duplo-uso",
+  "imgs": [
+   "assets/img/recorte/etiqueta-dupla-camada-adesiva-duplo-uso.webp"
+  ]
  },
  {
   "id": "etiqueta-duplo-uso-para-esterilizacao-a-vapor",
@@ -353,7 +400,12 @@
    "Vapor",
    "Indicador Tipo 1"
   ],
-  "source": "https://www.grafmed.ind.br/product-page/etiqueta-duplo-uso-para-esterilização-a-vapor"
+  "source": "https://www.grafmed.ind.br/product-page/etiqueta-duplo-uso-para-esterilização-a-vapor",
+  "imgs": [
+   "assets/img/recorte/etiqueta-duplo-uso-para-esterilizacao-a-vapor.webp",
+   "assets/img/recorte/etiqueta-duplo-uso-para-esterilizacao-a-vapor-2.webp",
+   "assets/img/galeria/etiqueta-duplo-uso-para-esterilizacao-a-vapor-2.webp"
+  ]
  },
  {
   "id": "etiqueta-duplo-uso-para-rastreio-de-material-desinfetado",
@@ -381,7 +433,10 @@
   "img": "assets/img/recorte/etiqueta-duplo-uso-para-rastreio-de-material-desinfetado.webp",
   "featured": false,
   "tags": [],
-  "source": "https://www.grafmed.ind.br/product-page/etiqueta-duplo-uso-para-rastreio-de-material-desinfetado"
+  "source": "https://www.grafmed.ind.br/product-page/etiqueta-duplo-uso-para-rastreio-de-material-desinfetado",
+  "imgs": [
+   "assets/img/recorte/etiqueta-duplo-uso-para-rastreio-de-material-desinfetado.webp"
+  ]
  },
  {
   "id": "etiqueta-duplo-uso-vpph-para-etiquetadoras",
@@ -419,7 +474,11 @@
   "tags": [
    "VPPH"
   ],
-  "source": "https://www.grafmed.ind.br/product-page/etiqueta-duplo-uso-vpph-para-etiquetadoras"
+  "source": "https://www.grafmed.ind.br/product-page/etiqueta-duplo-uso-vpph-para-etiquetadoras",
+  "imgs": [
+   "assets/img/recorte/etiqueta-duplo-uso-vpph-para-etiquetadoras.webp",
+   "assets/img/galeria/etiqueta-duplo-uso-vpph-para-etiquetadoras-2.webp"
+  ]
  },
  {
   "id": "etiqueta-lacre-de-seguranca",
@@ -443,7 +502,12 @@
   "img": "assets/img/recorte/etiqueta-lacre-de-seguranca.webp",
   "featured": false,
   "tags": [],
-  "source": "https://www.grafmed.ind.br/product-page/etiqueta-lacre-de-segurança"
+  "source": "https://www.grafmed.ind.br/product-page/etiqueta-lacre-de-segurança",
+  "imgs": [
+   "assets/img/recorte/etiqueta-lacre-de-seguranca.webp",
+   "assets/img/galeria/etiqueta-lacre-de-seguranca-0.webp",
+   "assets/img/galeria/etiqueta-lacre-de-seguranca-1.webp"
+  ]
  },
  {
   "id": "etiqueta-n95-para-esterilizacao-de-mascara",
@@ -474,7 +538,12 @@
    "VPPH",
    "Vapor"
   ],
-  "source": "https://www.grafmed.ind.br/product-page/etiqueta-n95-para-esterilização-de-máscara"
+  "source": "https://www.grafmed.ind.br/product-page/etiqueta-n95-para-esterilização-de-máscara",
+  "imgs": [
+   "assets/img/recorte/etiqueta-n95-para-esterilizacao-de-mascara.webp",
+   "assets/img/galeria/etiqueta-n95-para-esterilizacao-de-mascara-1.webp",
+   "assets/img/galeria/etiqueta-n95-para-esterilizacao-de-mascara-2.webp"
+  ]
  },
  {
   "id": "etiqueta-duplo-uso-para-etiquetadoras",
@@ -512,7 +581,15 @@
   "tags": [
    "Vapor"
   ],
-  "source": "https://www.grafmed.ind.br/product-page/etiqueta-para-etiquetadoras"
+  "source": "https://www.grafmed.ind.br/product-page/etiqueta-para-etiquetadoras",
+  "imgs": [
+   "assets/img/recorte/etiqueta-duplo-uso-para-etiquetadoras.webp",
+   "assets/img/galeria/etiqueta-duplo-uso-para-etiquetadoras-0.webp",
+   "assets/img/galeria/etiqueta-duplo-uso-para-etiquetadoras-2.webp",
+   "assets/img/galeria/etiqueta-duplo-uso-para-etiquetadoras-3.webp",
+   "assets/img/galeria/etiqueta-duplo-uso-para-etiquetadoras-4-foto.webp",
+   "assets/img/galeria/etiqueta-duplo-uso-para-etiquetadoras-5-foto.webp"
+  ]
  },
  {
   "id": "etiqueta-para-multiplas-checagens",
@@ -536,7 +613,10 @@
   "img": "assets/img/recorte/etiqueta-para-multiplas-checagens.webp",
   "featured": false,
   "tags": [],
-  "source": "https://www.grafmed.ind.br/product-page/etiqueta-paramúltiplas-checagens"
+  "source": "https://www.grafmed.ind.br/product-page/etiqueta-paramúltiplas-checagens",
+  "imgs": [
+   "assets/img/recorte/etiqueta-para-multiplas-checagens.webp"
+  ]
  },
  {
   "id": "etiqueta-validade-congelados",
@@ -560,7 +640,11 @@
   "img": "assets/img/recorte/etiqueta-validade-congelados.webp",
   "featured": false,
   "tags": [],
-  "source": "https://www.grafmed.ind.br/product-page/etiqueta-validade-congelados"
+  "source": "https://www.grafmed.ind.br/product-page/etiqueta-validade-congelados",
+  "imgs": [
+   "assets/img/recorte/etiqueta-validade-congelados.webp",
+   "assets/img/galeria/etiqueta-validade-congelados-1.webp"
+  ]
  },
  {
   "id": "etiquetas-adesivas-para-seringas",
@@ -596,7 +680,12 @@
   "img": "assets/img/recorte/etiquetas-adesivas-para-seringas.webp",
   "featured": true,
   "tags": [],
-  "source": "https://www.grafmed.ind.br/product-page/etiquetas-adesivas-para-seringas-norma-abnt-nbr-iso-26825-2021"
+  "source": "https://www.grafmed.ind.br/product-page/etiquetas-adesivas-para-seringas-norma-abnt-nbr-iso-26825-2021",
+  "imgs": [
+   "assets/img/recorte/etiquetas-adesivas-para-seringas.webp",
+   "assets/img/galeria/etiquetas-adesivas-para-seringas-1.webp",
+   "assets/img/galeria/etiquetas-adesivas-para-seringas-2.webp"
+  ]
  },
  {
   "id": "etiquetas-para-personalizar",
@@ -621,10 +710,13 @@
     "Produto isento de registro no M.S. Conforme RDC 185/2001 e enquadramento sanitário como, Produtos não considerados produtos para a saúde."
    ]
   ],
-  "img": "assets/img/recorte/etiquetas-para-personalizar.webp",
+  "img": "assets/img/galeria/etiquetas-para-personalizar-0.webp",
   "featured": false,
   "tags": [],
-  "source": "https://www.grafmed.ind.br/product-page/etiquetas-para-personalizar"
+  "source": "https://www.grafmed.ind.br/product-page/etiquetas-para-personalizar",
+  "imgs": [
+   "assets/img/galeria/etiquetas-para-personalizar-0.webp"
+  ]
  },
  {
   "id": "filtro-circular-de-papel-hidrofobo-para-containers",
@@ -663,7 +755,11 @@
    "Vapor",
    "Indicador Tipo 1"
   ],
-  "source": "https://www.grafmed.ind.br/product-page/filtro-circular-de-papel-hidrófobo-para-containers"
+  "source": "https://www.grafmed.ind.br/product-page/filtro-circular-de-papel-hidrófobo-para-containers",
+  "imgs": [
+   "assets/img/recorte/filtro-circular-de-papel-hidrofobo-para-containers.webp",
+   "assets/img/galeria/filtro-circular-de-papel-hidrofobo-para-containers-2-foto.webp"
+  ]
  },
  {
   "id": "fita-fixadora-fecho-de-contato-velcro",
@@ -687,7 +783,10 @@
   "img": "assets/img/recorte/fita-fixadora-fecho-de-contato-velcro.webp",
   "featured": false,
   "tags": [],
-  "source": "https://www.grafmed.ind.br/product-page/fita-fixadora-fecho-de-contato-velcro"
+  "source": "https://www.grafmed.ind.br/product-page/fita-fixadora-fecho-de-contato-velcro",
+  "imgs": [
+   "assets/img/recorte/fita-fixadora-fecho-de-contato-velcro.webp"
+  ]
  },
  {
   "id": "fita-identificadora-para-instrumental-cirurgico",
@@ -723,7 +822,12 @@
   "img": "assets/img/recorte/fita-identificadora-para-instrumental-cirurgico.webp",
   "featured": true,
   "tags": [],
-  "source": "https://www.grafmed.ind.br/product-page/fita-identificadora-para-instrumental-cirúrgico"
+  "source": "https://www.grafmed.ind.br/product-page/fita-identificadora-para-instrumental-cirúrgico",
+  "imgs": [
+   "assets/img/recorte/fita-identificadora-para-instrumental-cirurgico.webp",
+   "assets/img/galeria/fita-identificadora-para-instrumental-cirurgico-1-foto.webp",
+   "assets/img/galeria/fita-identificadora-para-instrumental-cirurgico-2-foto.webp"
+  ]
  },
  {
   "id": "micro-etiqueta-com-qr-code",
@@ -759,7 +863,11 @@
   "img": "assets/img/recorte/micro-etiqueta-com-qr-code.webp",
   "featured": false,
   "tags": [],
-  "source": "https://www.grafmed.ind.br/product-page/micro-etiqueta-com-qr-code"
+  "source": "https://www.grafmed.ind.br/product-page/micro-etiqueta-com-qr-code",
+  "imgs": [
+   "assets/img/recorte/micro-etiqueta-com-qr-code.webp",
+   "assets/img/galeria/micro-etiqueta-com-qr-code-3.webp"
+  ]
  },
  {
   "id": "placas-de-identificacao",
@@ -783,7 +891,10 @@
   "img": "assets/img/recorte/placas-de-identificacao.webp",
   "featured": false,
   "tags": [],
-  "source": "https://www.grafmed.ind.br/product-page/placas-de-identificação"
+  "source": "https://www.grafmed.ind.br/product-page/placas-de-identificação",
+  "imgs": [
+   "assets/img/recorte/placas-de-identificacao.webp"
+  ]
  },
  {
   "id": "protetor-de-policarbonato-para-instrumental-cirurgico",
@@ -807,7 +918,11 @@
   "img": "assets/img/recorte/protetor-de-policarbonato-para-instrumental-cirurgico.webp",
   "featured": false,
   "tags": [],
-  "source": "https://www.grafmed.ind.br/product-page/protetor-de-policarbonato-para-instrumental-cirúrgico"
+  "source": "https://www.grafmed.ind.br/product-page/protetor-de-policarbonato-para-instrumental-cirúrgico",
+  "imgs": [
+   "assets/img/recorte/protetor-de-policarbonato-para-instrumental-cirurgico.webp",
+   "assets/img/galeria/protetor-de-policarbonato-para-instrumental-cirurgico-2.webp"
+  ]
  },
  {
   "id": "pulseiras-de-identificacao-hospitalar",
@@ -843,7 +958,12 @@
   "img": "assets/img/recorte/pulseiras-de-identificacao-hospitalar.webp",
   "featured": true,
   "tags": [],
-  "source": "https://www.grafmed.ind.br/product-page/pulseiras-de-identificação-hospitalar-para-classificação-de-risco"
+  "source": "https://www.grafmed.ind.br/product-page/pulseiras-de-identificação-hospitalar-para-classificação-de-risco",
+  "imgs": [
+   "assets/img/recorte/pulseiras-de-identificacao-hospitalar.webp",
+   "assets/img/recorte/pulseiras-de-identificacao-hospitalar-2.webp",
+   "assets/img/galeria/pulseiras-de-identificacao-hospitalar-0.webp"
+  ]
  },
  {
   "id": "ribbon-para-impressora-termica",
@@ -871,7 +991,12 @@
   "img": "assets/img/recorte/ribbon-para-impressora-termica.webp",
   "featured": false,
   "tags": [],
-  "source": "https://www.grafmed.ind.br/product-page/ribbon-para-impressora-térmica"
+  "source": "https://www.grafmed.ind.br/product-page/ribbon-para-impressora-térmica",
+  "imgs": [
+   "assets/img/recorte/ribbon-para-impressora-termica.webp",
+   "assets/img/galeria/ribbon-para-impressora-termica-1.webp",
+   "assets/img/galeria/ribbon-para-impressora-termica-2.webp"
+  ]
  },
  {
   "id": "rotulos-personalizados-para-embalagens",
@@ -895,7 +1020,16 @@
   "img": "assets/img/recorte/rotulos-personalizados-para-embalagens.webp",
   "featured": false,
   "tags": [],
-  "source": "https://www.grafmed.ind.br/product-page/rótulos-personalizados-para-embalagens"
+  "source": "https://www.grafmed.ind.br/product-page/rótulos-personalizados-para-embalagens",
+  "imgs": [
+   "assets/img/recorte/rotulos-personalizados-para-embalagens.webp",
+   "assets/img/recorte/rotulos-personalizados-para-embalagens-2.webp",
+   "assets/img/recorte/rotulos-personalizados-para-embalagens-3.webp",
+   "assets/img/recorte/rotulos-personalizados-para-embalagens-4.webp",
+   "assets/img/recorte/rotulos-personalizados-para-embalagens-5.webp",
+   "assets/img/recorte/rotulos-personalizados-para-embalagens-6.webp",
+   "assets/img/recorte/rotulos-personalizados-para-embalagens-7.webp"
+  ]
  },
  {
   "id": "tag-duplo-uso-com-lacre-para-containers",
@@ -933,7 +1067,11 @@
   "tags": [
    "Vapor"
   ],
-  "source": "https://www.grafmed.ind.br/product-page/tag-duplo-uso-com-lacre-para-containers"
+  "source": "https://www.grafmed.ind.br/product-page/tag-duplo-uso-com-lacre-para-containers",
+  "imgs": [
+   "assets/img/recorte/tag-duplo-uso-com-lacre-para-containers.webp",
+   "assets/img/galeria/tag-duplo-uso-com-lacre-para-containers-2.webp"
+  ]
  },
  {
   "id": "etiqueta-grafdental-duplo-uso-esterilizacao-a-vapor",
@@ -960,7 +1098,14 @@
    "Vapor",
    "RDC 1002"
   ],
-  "source": ""
+  "source": "",
+  "imgs": [
+   "assets/img/recorte/etiqueta-grafdental-duplo-uso-esterilizacao-a-vapor.webp",
+   "assets/img/galeria/etiqueta-grafdental-duplo-uso-esterilizacao-a-vapor-0.webp",
+   "assets/img/galeria/etiqueta-grafdental-duplo-uso-esterilizacao-a-vapor-1.webp",
+   "assets/img/galeria/etiqueta-grafdental-duplo-uso-esterilizacao-a-vapor-2.webp",
+   "assets/img/galeria/etiqueta-grafdental-duplo-uso-esterilizacao-a-vapor-3.webp"
+  ]
  },
  {
   "id": "etiqueta-duplo-uso-grafdental",
@@ -986,6 +1131,312 @@
   "tags": [
    "Vapor"
   ],
+  "source": "",
+  "imgs": [
+   "assets/img/recorte/etiqueta-duplo-uso-grafdental.webp",
+   "assets/img/galeria/etiqueta-duplo-uso-grafdental-0.webp",
+   "assets/img/galeria/etiqueta-duplo-uso-grafdental-1.webp",
+   "assets/img/galeria/etiqueta-duplo-uso-grafdental-2.webp",
+   "assets/img/galeria/etiqueta-duplo-uso-grafdental-4.webp"
+  ]
+ },
+ {
+  "id": "etiqueta-gondola",
+  "line": "rotulos-etiquetas",
+  "name": "Etiqueta Gôndola",
+  "short": "Estrutura para exposição e organização de produtos no ponto de venda.",
+  "tabs": [
+   [
+    "Uso",
+    "Precificação e identificação de produtos em gôndolas e prateleiras."
+   ],
+   [
+    "Características",
+    "Formato com encaixe para trilhos de gôndola, em rolo, disponível em cores."
+   ],
+   [
+    "Diferenciais",
+    "Produção nacional grafMED, com medidas e personalização conforme a necessidade do cliente."
+   ]
+  ],
+  "img": "assets/img/recorte/etiqueta-gondola.webp",
+  "imgs": [
+   "assets/img/recorte/etiqueta-gondola.webp"
+  ],
+  "featured": false,
+  "tags": [],
+  "source": ""
+ },
+ {
+  "id": "etiqueta-void",
+  "line": "rotulos-etiquetas",
+  "name": "Etiqueta VOID",
+  "short": "Lacre de segurança antiviolação: ao remover, a mensagem VOID aparece e mostra que o produto foi aberto.",
+  "tabs": [
+   [
+    "Uso",
+    "Lacrar embalagens, equipamentos e produtos que precisam comprovar inviolabilidade."
+   ],
+   [
+    "Características",
+    "Material com efeito VOID, que deixa a marca na superfície ao ser removido. Personalizável com a marca do cliente."
+   ],
+   [
+    "Diferenciais",
+    "Produção nacional grafMED, com medidas e personalização conforme a necessidade do cliente."
+   ]
+  ],
+  "img": "assets/img/recorte/etiqueta-void.webp",
+  "imgs": [
+   "assets/img/recorte/etiqueta-void.webp"
+  ],
+  "featured": false,
+  "tags": [],
+  "source": ""
+ },
+ {
+  "id": "etiqueta-vinil",
+  "line": "rotulos-etiquetas",
+  "name": "Etiqueta Vinil",
+  "short": "Alta durabilidade, ideal para etiquetas que precisam resistir às intempéries, umidade e produtos químicos.",
+  "tabs": [
+   [
+    "Uso",
+    "Identificação de produtos químicos, frascos, galões e itens com exposição prolongada."
+   ],
+   [
+    "Características",
+    "Material vinílico resistente à água, à umidade e a produtos químicos."
+   ],
+   [
+    "Diferenciais",
+    "Produção nacional grafMED, com medidas e personalização conforme a necessidade do cliente."
+   ]
+  ],
+  "img": "assets/img/recorte/etiqueta-vinil.webp",
+  "imgs": [
+   "assets/img/recorte/etiqueta-vinil.webp"
+  ],
+  "featured": false,
+  "tags": [],
+  "source": ""
+ },
+ {
+  "id": "etiqueta-polietileno",
+  "line": "rotulos-etiquetas",
+  "name": "Etiqueta Polietileno",
+  "short": "Alta flexibilidade para superfícies curvas ou maleáveis, como frascos squeezáveis.",
+  "tabs": [
+   [
+    "Uso",
+    "Rotulagem de frascos de cosméticos, higiene e produtos que são apertados no uso."
+   ],
+   [
+    "Características",
+    "Material flexível que acompanha a deformação da embalagem sem descolar."
+   ],
+   [
+    "Diferenciais",
+    "Produção nacional grafMED, com medidas e personalização conforme a necessidade do cliente."
+   ]
+  ],
+  "img": "assets/img/recorte/etiqueta-polietileno.webp",
+  "imgs": [
+   "assets/img/recorte/etiqueta-polietileno.webp"
+  ],
+  "featured": false,
+  "tags": [],
+  "source": ""
+ },
+ {
+  "id": "etiqueta-casca-de-ovo",
+  "line": "rotulos-etiquetas",
+  "name": "Etiqueta Casca de Ovo",
+  "short": "Solução para aplicações que exigem segurança: material frágil que se fragmenta ao tentar remover.",
+  "tabs": [
+   [
+    "Uso",
+    "Antiviolação, garantia e rastreabilidade em produtos e equipamentos."
+   ],
+   [
+    "Características",
+    "Material frágil, não removível, de alta aderência. Rasga ao tentar remover, sem deixar evidência reaproveitável."
+   ],
+   [
+    "Diferenciais",
+    "Produção nacional grafMED, com medidas e personalização conforme a necessidade do cliente."
+   ]
+  ],
+  "img": "assets/img/recorte/etiqueta-casca-de-ovo.webp",
+  "imgs": [
+   "assets/img/recorte/etiqueta-casca-de-ovo.webp"
+  ],
+  "featured": false,
+  "tags": [],
+  "source": ""
+ },
+ {
+  "id": "tag-identificacao",
+  "line": "cme-hospitalar",
+  "name": "Tag de Identificação",
+  "short": "Rápida visualização, garantindo mais eficiência operacional e suportando altas e baixas temperaturas.",
+  "tabs": [
+   [
+    "Uso",
+    "Identificação de caixas, cestos, contêineres e materiais na CME."
+   ],
+   [
+    "Características",
+    "Tag com encaixe, resistente a altas e baixas temperaturas, para escrita manual ou impressão."
+   ],
+   [
+    "Diferenciais",
+    "Produção nacional grafMED, com medidas e personalização conforme a necessidade do cliente."
+   ]
+  ],
+  "img": "assets/img/recorte/tag-identificacao.webp",
+  "imgs": [
+   "assets/img/recorte/tag-identificacao.webp"
+  ],
+  "featured": false,
+  "tags": [],
+  "source": ""
+ },
+ {
+  "id": "etiqueta-criogenia",
+  "line": "cme-hospitalar",
+  "name": "Etiqueta Criogenia",
+  "short": "Indicada para temperaturas extremas: resiste ao congelamento profundo, mantendo aderência e legibilidade.",
+  "tabs": [
+   [
+    "Uso",
+    "Identificação de tubos, amostras biológicas e materiais armazenados em nitrogênio líquido."
+   ],
+   [
+    "Características",
+    "Suporta temperaturas de até -196 °C. Campos para ID da amostra, data e temperatura, com código de barras."
+   ],
+   [
+    "Diferenciais",
+    "Produção nacional grafMED, com medidas e personalização conforme a necessidade do cliente."
+   ]
+  ],
+  "img": "assets/img/recorte/etiqueta-criogenia.webp",
+  "imgs": [
+   "assets/img/recorte/etiqueta-criogenia.webp"
+  ],
+  "featured": false,
+  "tags": [],
+  "source": ""
+ },
+ {
+  "id": "etiqueta-processo-lavadora",
+  "line": "cme-hospitalar",
+  "name": "Etiqueta para Processo de Lavadora",
+  "short": "Suporta lavagens industriais, sendo resistente à água, produtos químicos e temperatura.",
+  "tabs": [
+   [
+    "Uso",
+    "Rastreabilidade de materiais que passam por termodesinfectoras e lavadoras industriais."
+   ],
+   [
+    "Características",
+    "Mantém aderência e legibilidade após ciclos de lavagem com água, detergentes e calor."
+   ],
+   [
+    "Diferenciais",
+    "Produção nacional grafMED, com medidas e personalização conforme a necessidade do cliente."
+   ]
+  ],
+  "img": "assets/img/recorte/etiqueta-processo-lavadora.webp",
+  "imgs": [
+   "assets/img/recorte/etiqueta-processo-lavadora.webp"
+  ],
+  "featured": false,
+  "tags": [],
+  "source": ""
+ },
+ {
+  "id": "fita-marcadora-cartelas",
+  "line": "cme-hospitalar",
+  "name": "Fita Marcadora de Instrumentais em Cartelas",
+  "short": "Identifica instrumentais e é resistente à autoclave, em cartelas práticas com várias cores.",
+  "tabs": [
+   [
+    "Uso",
+    "Codificação por cor de instrumentais por especialidade, caixa ou setor."
+   ],
+   [
+    "Características",
+    "Cartelas com tiras autoadesivas coloridas, resistentes aos processos de esterilização."
+   ],
+   [
+    "Diferenciais",
+    "Produção nacional grafMED, com medidas e personalização conforme a necessidade do cliente."
+   ]
+  ],
+  "img": "assets/img/galeria/fita-marcadora-cartelas-0.webp",
+  "imgs": [
+   "assets/img/galeria/fita-marcadora-cartelas-0.webp"
+  ],
+  "featured": false,
+  "tags": [],
+  "source": ""
+ },
+ {
+  "id": "etiqueta-grafdental-branca",
+  "line": "grafdental",
+  "name": "Etiqueta para Esterilização Branca 60 × 40 mm",
+  "short": "Etiqueta com dupla camada adesiva e indicador químico Tipo 1. Pode ser aplicada manualmente ou impressa diretamente na impressora.",
+  "tabs": [
+   [
+    "Uso",
+    "Identificação de envelopes da autoclave do consultório, com preenchimento manual ou impressão."
+   ],
+   [
+    "Características",
+    "Dupla camada adesiva, indicador químico Tipo 1, medida 60 × 40 mm."
+   ],
+   [
+    "Diferenciais",
+    "Produção nacional grafMED, com medidas e personalização conforme a necessidade do cliente."
+   ]
+  ],
+  "img": "assets/img/galeria/etiqueta-grafdental-branca-0.webp",
+  "imgs": [
+   "assets/img/galeria/etiqueta-grafdental-branca-0.webp"
+  ],
+  "featured": false,
+  "tags": [
+   "Indicador Tipo 1"
+  ],
+  "source": ""
+ },
+ {
+  "id": "etiqueta-bopp",
+  "line": "rotulos-etiquetas",
+  "name": "Etiqueta BOPP",
+  "short": "Qualidade de impressão e acabamento profissional, com superfície lisa e resistente à água.",
+  "tabs": [
+   [
+    "Uso",
+    "Alimentos, cosméticos, indústria, logística e produtos que ficam expostos."
+   ],
+   [
+    "Características",
+    "Filme BOPP resistente à água e à umidade, fácil de limpar, com excelente acabamento de impressão."
+   ],
+   [
+    "Diferenciais",
+    "Produção nacional grafMED, com medidas e personalização conforme a necessidade do cliente."
+   ]
+  ],
+  "img": "assets/img/recorte/etiquetas-para-personalizar.webp",
+  "imgs": [
+   "assets/img/recorte/etiquetas-para-personalizar.webp"
+  ],
+  "featured": false,
+  "tags": [],
   "source": ""
  }
 ]

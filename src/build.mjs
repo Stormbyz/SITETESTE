@@ -37,21 +37,10 @@ const ctaSpecialist = (msg = 'Olá! Quero falar com um especialista grafMED.', e
 
 const eyebrow = (t) => `<p class="eyebrow">${t}</p>`;
 
-// padrão de hexágonos da marca (linhas finas), mais forte no lado da imagem para não atrapalhar a leitura
-let hexN = 0;
-const hexes = (side = 'right') => {
-  const id = `hx${++hexN}`;
-  return `<svg class="hexes hexes-${side}" aria-hidden="true" focusable="false">
-  <defs>
-    <pattern id="${id}p" width="104" height="180" patternUnits="userSpaceOnUse" patternTransform="scale(1.15)">
-      <path d="M52 0 L104 30 L104 90 L52 120 L0 90 L0 30 Z M52 120 L52 180 M0 90 L0 150 L52 180 L104 150 L104 90" fill="none" stroke-width="1.2"/>
-    </pattern>
-    <radialGradient id="${id}g" cx="${side === 'right' ? '82%' : side === 'center' ? '50%' : '18%'}" cy="40%" r="62%"><stop offset="0" stop-color="#fff" stop-opacity="1"/><stop offset=".55" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
-    <mask id="${id}m"><rect width="100%" height="100%" fill="url(#${id}g)"/></mask>
-  </defs>
-  <rect width="100%" height="100%" fill="url(#${id}p)" mask="url(#${id}m)"/>
-</svg>`;
-};
+// Padrão de hexágonos oficial da marca (assets/img/hex). solar = traço branco sobre o laranja; white = traço laranja sobre branco
+const hexes = (variant = 'solar', pos = 'right') => `<div class="hexbg hexbg-${variant} hexbg-${pos}" aria-hidden="true"></div>`;
+// Hexágono arredondado em gradiente, com contorno deslocado (elemento gráfico da marca)
+const hexblob = (cls = '') => `<svg class="hexblob ${cls}" viewBox="0 0 400 400" aria-hidden="true"><defs><linearGradient id="hbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FBC21A"/><stop offset="1" stop-color="#EC720B"/></linearGradient></defs><path class="hb-fill" d="M200 20 Q214 20 226 27 L345 96 Q370 110 370 138 L370 262 Q370 290 345 304 L226 373 Q200 388 174 373 L55 304 Q30 290 30 262 L30 138 Q30 110 55 96 L174 27 Q186 20 200 20Z"/><path class="hb-line" d="M230 40 Q244 40 256 47 L375 116 Q400 130 400 158 L400 282 Q400 310 375 324 L256 393 Q230 408 204 393 L85 324 Q60 310 60 282 L60 158 Q60 130 85 116 L204 47 Q216 40 230 40Z"/></svg>`;
 const deco = hexes;
 
 const accordion = (items, open = -1) => `
@@ -113,7 +102,7 @@ const originalCallout = (r, txt = 'Produtos grafMED e grafDENTAL saem da fábric
 </aside>`;
 
 const clientsBlock = (r, title = true) => `
-<section class="section clients">
+<section class="section clients">${hexes('white', 'left')}
   <div class="wrap">
     ${title ? `<div class="sec-head center">${eyebrow('Quem confia')}<h2 class="h2">A confiança de quem é <strong>referência no mercado.</strong></h2></div>` : ''}
   </div>
@@ -128,7 +117,7 @@ const clientsBlock = (r, title = true) => `
 </section>`;
 
 const faqBlock = (items, r, title = 'Perguntas <strong>frequentes</strong>') => `
-<section class="section faq-sec">
+<section class="section faq-sec">${hexes('white', 'right')}
   <div class="wrap faq-wrap">
     <div class="faq-side reveal">${eyebrow('FAQ')}<h2 class="h2">${title}</h2><p class="muted">Não achou a sua dúvida? Um especialista responde pelo WhatsApp.</p>
       ${wa('Olá! Tenho uma dúvida sobre os produtos grafMED.', `${waIcon} Perguntar no WhatsApp`, 'btn btn-outline')}
@@ -168,7 +157,7 @@ function pageHero(r, key, { crumbs = [], selo = '', title, text, actions = '', h
   const tema = b.tema === 'claro' ? 'light' : 'orange';
   return `
 <section class="hero hero-page hero--${tema}" data-banner="${key}">
-  ${hexes()}
+  ${hexes(tema === 'light' ? 'white' : 'solar')}
   <div class="wrap hero-in">
     <div class="hero-copy">
       ${crumbs.length ? breadcrumb(crumbs, r) : ''}
@@ -192,7 +181,7 @@ function homeHero(r) {
         const tema = s.tema === 'claro' ? 'light' : 'orange';
         const H = i === 0 ? 'h1' : 'h2';
         return `<div class="slide hero--${tema}${i === 0 ? ' is-on' : ''}" role="group" aria-roledescription="slide" aria-label="${i + 1} de ${slides.length}"${i ? ' aria-hidden="true"' : ''}>
-        ${hexes()}
+        ${hexes(tema === 'light' ? 'white' : 'solar')}
         <div class="wrap hero-in">
           <div class="hero-copy">
             <p class="selo">${s.selo || ''}</p>
@@ -220,12 +209,12 @@ const indicatorSim = (r, compact = false) => `
     <div class="ind-copy reveal">
       <p class="box-tag">Indicador químico Tipo 1</p>
       <h2 class="h2">Entenda como funciona <strong>a mudança de cor na esterilização.</strong></h2>
-      <p class="muted">A faixa indicadora da etiqueta grafMED sai da fábrica rosa e fica marrom depois do ciclo a vapor. Puxe a linha da etiqueta, gire e aproxime para ver o indicador de perto.</p>
+      <p class="muted">A faixa indicadora da etiqueta grafMED sai da fábrica rosa e fica marrom depois do ciclo a vapor. Arraste a linha da esquerda para a direita, do antes ao depois do processo. Gire e aproxime para ver o indicador de perto.</p>
       <div class="ind-panel">
         <div class="ind-row"><span>Autoclave a vapor</span><b data-ind-temp>25 °C</b></div>
         <div class="ind-bar"><i data-ind-bar></i></div>
         <div class="ind-legend"><span><i class="sw sw-pink"></i>Rosa: antes do processo</span><span><i class="sw sw-brown"></i>Marrom: processo concluído</span></div>
-        <p class="ind-status" data-ind-status aria-live="polite">Puxe a linha para iniciar o ciclo a vapor.</p>
+        <p class="ind-status" data-ind-status aria-live="polite">Arraste a linha para a direita para iniciar o ciclo a vapor.</p>
         <div class="ind-actions"><button class="btn btn-primary btn-sm" type="button" data-ind-play>Simular ciclo completo</button><button class="btn btn-outline btn-sm" type="button" data-ind-reset>Reiniciar</button></div>
       </div>
     </div>
@@ -236,8 +225,12 @@ const indicatorSim = (r, compact = false) => `
           <button type="button" data-zoom-out aria-label="Afastar">−</button>
           <button type="button" class="wide" data-focus>Ver o indicador de perto</button>
         </div>
-        <div class="cord" data-cord aria-hidden="true"></div>
-        <button class="pull" type="button" data-pull aria-label="Puxe para simular a esterilização"><span class="pull-grip" aria-hidden="true"></span><span class="pull-txt">Puxe</span></button>
+        <div class="sweep-line" data-sweep-line aria-hidden="true"><span class="sl-a">Antes</span><span class="sl-b">Depois</span></div>
+        <div class="sweep" data-sweep>
+          <span class="sw-lbl">Antes do processo</span>
+          <div class="sw-track" data-track><div class="sw-fill"></div><button class="pull" type="button" data-pull role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Arraste para a direita para simular a esterilização"><span class="pull-grip" aria-hidden="true"></span>Arraste</button></div>
+          <span class="sw-lbl">Depois do processo</span>
+        </div>
         <p class="ind-hint">Arraste para girar · role ou use + e − para aproximar</p>
       </div>
     </div>
@@ -264,6 +257,24 @@ const cycleScenes = (r) => {
   ];
   return scenes.map((h, i) => `<figure class="cycle-img${i === 0 ? ' on' : ''}" data-cycle-img>${h}<figcaption>${cycle[i][0]} · ${cycle[i][1]}</figcaption></figure>`).join('');
 };
+
+// Antes e depois do indicador químico na página do produto (arrastar na horizontal)
+const INDICATOR = {
+  'etiqueta-duplo-uso-para-esterilizacao-a-vapor': { a: 'assets/img/indicador/cme-antes.webp', b: 'assets/img/indicador/cme-depois.webp', ca: 'Rosa', cb: 'Marrom', mode: 'fade', txt: 'A faixa do indicador químico Tipo 1 sai da fábrica rosa e fica marrom depois do ciclo a vapor.' },
+  'etiqueta-grafdental-duplo-uso-esterilizacao-a-vapor': { a: 'assets/img/indicador/dental-antes.webp', b: 'assets/img/indicador/dental-depois.webp', ca: 'Azul', cb: 'Marrom', txt: 'Na grafDENTAL, a faixa do indicador muda de azul para marrom depois da autoclave.' },
+  'etiqueta-duplo-uso-grafdental': { a: 'assets/img/indicador/dental-antes.webp', b: 'assets/img/indicador/dental-depois.webp', ca: 'Azul', cb: 'Marrom', txt: 'Na grafDENTAL, a faixa do indicador muda de azul para marrom depois da autoclave.' },
+};
+const beforeAfter = (r, d) => `
+<section class="section ba-sec">${hexes('white', 'left')}<div class="wrap ba-in">
+  <div class="reveal"><p class="box-tag">Indicador químico Tipo 1</p><h2 class="h2">Veja a mudança de cor <strong>antes e depois do processo.</strong></h2><p class="muted">${d.txt} Arraste a linha para comparar.</p>
+    <ul class="ba-legend"><li><i style="background:${d.ca === 'Rosa' ? '#F08C9B' : '#4080D6'}"></i>${d.ca}: antes do processo</li><li><i style="background:#5C2612"></i>${d.cb}: processo concluído</li></ul></div>
+  <div class="ba reveal${d.mode === 'fade' ? ' ba-fade' : ''}" data-ba style="--p:50%">
+    <img src="${r(d.a)}" alt="Etiqueta antes do processo" class="ba-a">
+    <div class="ba-b-wrap"><img src="${r(d.b)}" alt="Etiqueta depois do processo" class="ba-b"></div>
+    <div class="ba-line" aria-hidden="true"><span>Depois</span><span>Antes</span></div>
+    <input type="range" min="0" max="100" value="50" class="ba-range" aria-label="Comparar antes e depois do processo">
+  </div>
+</div></section>`;
 
 // ---------- layout ----------
 function layout({ path, title, desc, body, schema = [], active = '', head = '', three = false }) {
@@ -434,6 +445,7 @@ ${three ? `<script src="${r('assets/vendor/three.min.js')}"></script>\n<script s
 }
 
 // ---------- páginas ----------
+const BEST = ['etiqueta-duplo-uso-para-esterilizacao-a-vapor', 'fita-identificadora-para-instrumental-cirurgico', 'etiqueta-grafdental-duplo-uso-esterilizacao-a-vapor', 'tag-duplo-uso-com-lacre-para-containers', 'etiquetas-adesivas-para-seringas', 'pulseiras-de-identificacao-hospitalar'];
 
 // HOME
 const weekProducts = products.filter((p) => p.featured && p.img);
@@ -448,12 +460,21 @@ layout({
 ${homeHero(r)}
 
 <section class="section lines-sec">
+  ${hexes('white', 'left')}
   <div class="wrap">
     <div class="sec-head split-head">
       <div>${eyebrow('Linhas de produto')}<h2 class="h2">Encontre a <strong>linha certa</strong> para o seu processo.</h2></div>
       <a class="link" href="${r('produtos/index.html')}">Ver todas as linhas ${arrow}</a>
     </div>
     <div class="lgrid">${[...lines, ...extras].map((l, i) => lineCard(l, r, i)).join('')}</div>
+  </div>
+</section>
+
+<section class="section best-sec">
+  ${hexes('white', 'right')}
+  <div class="wrap">
+    <div class="sec-head split-head"><div>${eyebrow('Mais vendidos')}<h2 class="h2">Os produtos <strong>mais pedidos</strong> pelos nossos clientes.</h2></div><a class="link" href="${r('produtos/index.html')}">Ver todos os produtos ${arrow}</a></div>
+    <div class="pgrid best-grid">${BEST.map((id, i) => productCard(products.find((x) => x.id === id), r, i)).join('')}</div>
   </div>
 </section>
 
@@ -478,7 +499,7 @@ ${indicatorSim(r)}
 </section>
 
 <section class="week-sec" data-week>
-  ${hexes('left')}
+  ${hexes('solar', 'left')}${hexblob('hb-week')}
   <div class="wrap week">
     <div class="week-media" data-week-media></div>
     <div class="week-body">
@@ -493,7 +514,7 @@ ${indicatorSim(r)}
 </section>
 
 <section class="numbers">
-  ${hexes('center')}
+  ${hexes('solar', 'center')}
   <div class="wrap">
     <h2 class="h2 numbers-title reveal">Números que mostram <strong>a força da grafMED.</strong></h2>
     <div class="stats">
@@ -595,10 +616,12 @@ for (const p of products) {
   ${breadcrumb([['Produtos', 'produtos/index.html'], [l.name, `produtos/${l.slug}.html`], [p.name]], r)}
   <div class="product-in">
     <div class="gallery reveal">
-      <div class="gallery-stage" data-zoom>
+      <div class="gallery-stage" data-gallery>
         <span class="lab-chip">${l.chip}</span>
-        ${p.img ? `<img src="${r(p.img)}" alt="${esc(p.name)}" width="1000" height="1000">` : `<span class="lab-ph">${ico('box', 56)}<small>Foto real do catálogo em produção</small></span>`}
+        ${(p.imgs && p.imgs.length ? p.imgs : p.img ? [p.img] : []).map((src, i) => `<figure class="g-slide${i === 0 ? ' on' : ''}${src.includes('-foto.') ? ' is-photo' : ''}" data-zoom><img src="${r(src)}" alt="${esc(p.name)}${i ? ` (imagem ${i + 1})` : ''}" ${i ? 'loading="lazy"' : ''} width="1000" height="1000"></figure>`).join('') || `<span class="lab-ph">${ico('box', 56)}<small>Foto real do catálogo em produção</small></span>`}
+        ${(p.imgs || []).length > 1 ? `<button class="g-nav g-prev" type="button" data-gprev aria-label="Imagem anterior">${arrow}</button><button class="g-nav g-next" type="button" data-gnext aria-label="Próxima imagem">${arrow}</button>` : ''}
       </div>
+      ${(p.imgs || []).length > 1 ? `<div class="g-thumbs" role="tablist" aria-label="Imagens do produto">${p.imgs.map((src, i) => `<button type="button" role="tab" aria-selected="${i === 0}" data-gthumb="${i}" class="${src.includes('-foto.') ? 'is-photo' : ''}"><img src="${r(src)}" alt="" loading="lazy"></button>`).join('')}</div>` : ''}
       ${p.tags.length ? `<ul class="ptags">${p.tags.map((t) => `<li>${t}</li>`).join('')}</ul>` : ''}
     </div>
     <div class="pinfo">
@@ -618,6 +641,7 @@ for (const p of products) {
     </div>
   </div>
 </div></section>
+${INDICATOR[p.id] ? beforeAfter(r, INDICATOR[p.id]) : ''}
 ${related.length ? `<section class="section section-tight"><div class="wrap"><div class="sec-head">${eyebrow('Da mesma linha')}<h2 class="h2">Veja <strong>também</strong></h2></div><div class="pgrid">${related.map((x, i) => productCard(x, r, i)).join('')}</div></div></section>` : ''}
 ${faqs[p.line] ? faqBlock(faqs[p.line].slice(0, 3), r) : ''}
 `,
@@ -637,6 +661,7 @@ ${pageHero(r, 'conversao-materia-prima', { crumbs: [['Produtos', 'produtos/index
 
 <section class="section"><div class="wrap">
   <div class="sec-head center">${eyebrow('Como funciona · 4 etapas')}<h2 class="h2">Do rolo ao kit, <strong>sem passar pela sua linha.</strong></h2></div>
+  <figure class="conv-illu reveal"><img src="${r('assets/img/fotos/conversao-etapas.webp')}" alt="Etapas da conversão grafMED: recebimento, processamento, embalagem e expedição" loading="lazy"></figure>
   <ol class="flow" data-flow>
     ${[['roll', 'Você envia', 'Bobina ou rolo de matéria-prima.'], ['cut', 'grafMED processa', 'Corte, montagem e acabamento.'], ['box', 'Kit embalado', 'Unitário ou em lote.'], ['truck', 'Entrega', 'Pronto para uso ou revenda.']]
       .map(([i, t, d], n) => `<li class="flow-step" data-flow-step><span class="flow-ico">${ico(i, 34)}</span><span class="flow-n">0${n + 1}</span><h3>${t}</h3><p>${d}</p></li>`)
@@ -644,7 +669,7 @@ ${pageHero(r, 'conversao-materia-prima', { crumbs: [['Produtos', 'produtos/index
   </ol>
 </div></section>
 
-<section class="section section-cream"><div class="wrap">
+<section class="section section-soft"><div class="wrap">
   <div class="sec-head">${eyebrow('Por que terceirizar')}<h2 class="h2">Menos etapas <strong>na sua planta.</strong></h2></div>
   <div class="benefits">
     ${[['clock', 'Tempo', 'Elimina etapas do seu processo produtivo interno.'], ['space', 'Espaço', 'Sem máquinas de corte e acabamento na sua planta.'], ['coin', 'Custo', 'Sem mão-de-obra especializada de acabamento.'], ['check', 'Qualidade', 'Corte preciso e embalagem padronizada.']]
@@ -683,7 +708,7 @@ layout({
   three: true,
   body: (r) => `
 ${pageHero(r, 'projetos', { crumbs: [['Produtos', 'produtos/index.html'], ['Projetos']], selo: 'Projetos · P&D', title: 'Não encontrou no nosso site? <strong>Fale com um especialista em projetos.</strong>', text: 'Conte o que você precisa. A grafMED avalia e desenvolve a solução para o seu processo.' })}
-<section class="section section-cream cfg-sec"><div class="wrap">
+<section class="section cfg-sec"><div class="wrap">
   <div class="sec-head">${eyebrow('Monte uma prévia em 3D')}<h2 class="h2">Desenhe a sua etiqueta <strong>e envie para o especialista.</strong></h2><p class="muted">Escolha forma, medida, material e indicador. A prévia gira em 3D e as informações vão prontas na mensagem.</p></div>
   <div class="cfg" data-cfg3d>
     <div class="cfg-view"><div class="cfg-stage" data-cfg-stage></div><span class="cfg-size" data-cfg-size>60 × 40 mm</span><p class="ind-hint">Arraste para girar</p></div>
@@ -885,24 +910,45 @@ layout({
   active: 'quem-somos',
   body: (r) => `
 ${pageHero(r, 'quem-somos', { crumbs: [['Quem somos']], selo: 'Quem somos', title: 'Mais de 20 anos de inovação <strong>em identificação e rastreabilidade.</strong>', text: 'A grafMED nasceu para resolver uma dor comum em hospitais: a rastreabilidade dos processos de esterilização.' })}
-<section class="section"><div class="wrap two-col">
+<section class="section about-sec">${hexes('white', 'right')}<div class="wrap two-col">
   <div class="prose reveal">
-    <p>A grafMED é uma indústria especializada em etiquetas médicas para rastreabilidade, usadas durante todo o fluxo de processamento de materiais na CME. Nossas soluções usam tecnologia 100% nacional, o que protege os clientes da volatilidade do câmbio e do mercado externo.</p>
-    <p>Hoje estamos presentes em todo o território nacional por meio de distribuidores e consultores, e seguimos em expansão para novos mercados: logística, indústria alimentícia, farmacêutica, veterinária, engenharia e construção.</p>
+    ${eyebrow('Nossa história')}
+    <h2 class="h2">Nascemos para resolver <strong>a rastreabilidade na esterilização.</strong></h2>
+    <p>Maurício Calicchio e Luís Henrique Batista perceberam uma oportunidade em um mercado que ainda engatinhava no Brasil e fundaram, há mais de duas décadas, a grafMED. Hoje a empresa está presente em todo o território nacional por meio de distribuidores e consultores.</p>
+    <p>Somos uma gráfica especializada em etiquetas médicas para rastreabilidade, usadas durante todo o fluxo de processamento de materiais na CME. Nossas soluções usam tecnologia de ponta totalmente nacional, o que protege os clientes da volatilidade do câmbio e do mercado externo.</p>
+    <p>Construímos soluções sólidas e versáteis, uma equipe experiente e homologada e um atendimento reconhecidamente caprichado. Seguimos em expansão para logística, indústria alimentícia, farmacêutica, veterinária, engenharia e construção.</p>
   </div>
-  <div class="stats stats-2 reveal">
-    <div class="stat"><b data-count="20" data-prefix="+">+20</b><span>anos de mercado</span></div>
-    <div class="stat"><b data-count="100" data-suffix="%">100%</b><span>tecnologia nacional</span></div>
-    <div class="stat"><b>RDC-15</b><span>conformidade</span></div>
-    <div class="stat"><b>ISO</b><span>ABNT NBR ISO 26825:2021</span></div>
+  <div class="about-visual reveal">
+    ${hexblob('hb-about')}
+    <img src="${r('assets/img/recorte/x-composicao.webp')}" alt="Produtos grafMED: etiquetas, filtros, contêineres e etiquetas para seringas" loading="lazy">
   </div>
 </div></section>
-<section class="section section-cream"><div class="wrap">
-  <div class="sec-head">${eyebrow('Propósito')}<h2 class="h2">Missão, visão <strong>e valores</strong></h2></div>
+<section class="numbers">
+  ${hexes('solar', 'center')}
+  <div class="wrap">
+    <h2 class="h2 numbers-title reveal">grafMED <strong>em números.</strong></h2>
+    <div class="stats">
+      <div class="stat reveal"><b data-count="20" data-prefix="+">+20</b><span>anos de mercado</span></div>
+      <div class="stat reveal" style="--d:80ms"><b data-count="100" data-suffix="%">100%</b><span>tecnologia nacional</span></div>
+      <div class="stat reveal" style="--d:160ms"><b data-count="1000" data-prefix="+">+1.000</b><span>formatos de etiquetas</span></div>
+      <div class="stat reveal" style="--d:240ms"><b>Brasil</b><span>atendimento em todo o território</span></div>
+    </div>
+  </div>
+</section>
+<section class="section">${hexes('white', 'left')}<div class="wrap">
+  <div class="sec-head center">${eyebrow('Nossos pilares')}<h2 class="h2">O que nos <strong>move.</strong></h2></div>
   <div class="benefits three">
-    <div class="benefit reveal">${ico('flag', 30)}<h3>Missão</h3><p>Atender as necessidades do mercado e oferecer a mais alta tecnologia disponível, com inovação e transparência em preço, prazo e atendimento.</p></div>
-    <div class="benefit reveal" style="--d:80ms">${ico('star', 30)}<h3>Visão</h3><p>Ser a melhor empresa de rastreabilidade, impressão e peças técnicas, atendendo às mais diversas demandas do setor da saúde e de outros mercados.</p></div>
-    <div class="benefit reveal" style="--d:160ms">${ico('shield', 30)}<h3>Valores</h3><p>Qualidade e conformidade no nosso DNA, tecnologia nacional com segurança global e parceria que gera valor.</p></div>
+    <div class="benefit reveal">${ico('shield', 30)}<h3>Qualidade e conformidade no nosso DNA</h3><p>Produtos que atendem e superam normas como a RDC-15 e a ABNT NBR ISO 26825:2021.</p></div>
+    <div class="benefit reveal" style="--d:80ms">${ico('factory', 30)}<h3>Tecnologia nacional, segurança global</h3><p>Agilidade e estabilidade de fornecimento, sem depender do câmbio e de tarifas externas.</p></div>
+    <div class="benefit reveal" style="--d:160ms">${ico('people', 30)}<h3>Parceria que gera valor</h3><p>Desenvolvimento de soluções sob medida e suporte especializado em todo o Brasil.</p></div>
+  </div>
+</div></section>
+<section class="section purpose-sec">${hexes('solar', 'right')}<div class="wrap">
+  <div class="sec-head">${eyebrow('Propósito')}<h2 class="h2">Missão, visão <strong>e valores</strong></h2></div>
+  <div class="purpose">
+    <article class="reveal"><span>01</span><h3>Missão</h3><p>Atender as necessidades do mercado e oferecer a mais alta tecnologia disponível, com inovação e transparência em preço, prazo e atendimento.</p></article>
+    <article class="reveal" style="--d:80ms"><span>02</span><h3>Visão</h3><p>Ser a melhor empresa de rastreabilidade, impressão e peças técnicas, atendendo às mais diversas demandas do setor da saúde e de qualquer mercado que precise de produtos técnicos específicos.</p></article>
+    <article class="reveal" style="--d:160ms"><span>03</span><h3>Valores</h3><p>Ética, qualidade e compromisso com a segurança do paciente, com uma equipe dedicada a desenvolver tecnologia para cada mercado.</p></article>
   </div>
 </div></section>
 ${clientsBlock(r)}
@@ -936,7 +982,7 @@ ${pageHero(r, 'canal-parceiro', { crumbs: [['Canal Parceiro']], selo: 'Programa 
   <div class="sec-head split-head"><div>${eyebrow('Onde comprar')}<h2 class="h2">Parceiros <strong>credenciados</strong></h2></div><input type="search" class="search" placeholder="Buscar por nome ou estado" aria-label="Buscar parceiro" data-partner-search></div>
   <div class="partners" data-partners></div>
 </div></section>
-<section class="section section-cream"><div class="wrap two">
+<section class="section section-soft"><div class="wrap two">
   <div class="panel reveal">
     <h2 class="h4">Canal de denúncia</h2>
     <p class="muted">Viu um anúncio ou produto suspeito? Conte para a gente.</p>

@@ -121,6 +121,11 @@
       "permanent": true
     },
     {
+      "source": "/product-page/c%C3%B3pia-de-etiqueta-de-despacho-e-entrega",
+      "destination": "/produtos/rotulos-etiquetas/etiqueta-de-fracionamento.html",
+      "permanent": true
+    },
+    {
       "source": "/product-page/data-de-fabrica%C3%A7%C3%A3o-validade-delivery",
       "destination": "/produtos/rotulos-etiquetas/data-de-fabricacao-validade-delivery.html",
       "permanent": true
@@ -143,6 +148,11 @@
     {
       "source": "/product-page/etiqueta-adesiva-qr-code-para-delivery",
       "destination": "/produtos/rotulos-etiquetas/etiqueta-qr-code-para-delivery.html",
+      "permanent": true
+    },
+    {
+      "source": "/product-page/etiqueta-de-despacho-e-entrega",
+      "destination": "/produtos/rotulos-etiquetas/etiqueta-de-despacho-e-entrega.html",
       "permanent": true
     },
     {
@@ -208,16 +218,6 @@
     {
       "source": "/product-page/r%C3%B3tulos-personalizados-para-embalagens",
       "destination": "/produtos/rotulos-etiquetas/rotulos-personalizados-para-embalagens.html",
-      "permanent": true
-    },
-    {
-      "source": "/product-page/c%C3%B3pia-de-etiqueta-de-despacho-e-entrega",
-      "destination": "/produtos/rotulos-etiquetas/etiqueta-de-fracionamento.html",
-      "permanent": true
-    },
-    {
-      "source": "/product-page/etiqueta-de-despacho-e-entrega",
-      "destination": "/produtos/rotulos-etiquetas/etiqueta-de-despacho-e-entrega.html",
       "permanent": true
     },
     {
