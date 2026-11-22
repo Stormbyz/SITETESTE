@@ -157,7 +157,7 @@ const stage = (r, b, eager = false) => {
     <div class="conv-ui"><span class="conv-tag">Material: <b data-conv-mat>Velcro</b></span><span class="conv-tag">Peças convertidas: <b data-conv-count>0</b></span></div>
     <div class="conv-picks" role="group" aria-label="Escolha o material">${[['velcro', 'Velcro'], ['micropore', 'Micropore'], ['feltro', 'Feltro'], ['espuma', 'Espuma'], ['silicone', 'Silicone']].map(([k, n], i) => `<button type="button" data-conv-pick="${k}" aria-pressed="${i === 0}">${n}</button>`).join('')}</div></div>`;
   if (b.video) return `<div class="hero-media hero-video"><video src="${r(b.video)}" poster="${r(b.poster || '')}" autoplay muted loop playsinline preload="metadata"></video></div>`;
-  const layers = (b.camadas || []).map((c, i) => `<img class="layer" src="${r(c.img)}" alt="" style="--x:${c.x}%;--y:${c.y}%;--w:${c.w}%;--z:${c.z || 3};--rot:${c.rot || 0}deg;--i:${i}" data-depth="${c.z || 3}" ${eager && i === (b.camadas.length - 1) ? 'fetchpriority="high"' : 'loading="lazy"'}>`).join('');
+  const layers = (b.camadas || []).map((c, i) => `<img class="layer" src="${r(c.img)}" alt="" style="--x:${c.x}%;--y:${c.y}%;--w:${c.w}%;--z:${c.z || 3};--rot:${c.rot || 0}deg;--i:${i}" data-depth="${c.z || 3}" ${eager ? (i === b.camadas.length - 1 ? 'fetchpriority="high"' : '') : 'loading="lazy"'}>`).join('');
   const pins = (b.selos || []).map((p, i) => `<span class="pin" style="--x:${p.x}%;--y:${p.y}%;--i:${i}" data-depth="6"><i aria-hidden="true"></i>${p.texto}</span>`).join('');
   return `<div class="hero-media hero-stage" data-stage><div class="stage-floor" aria-hidden="true"></div>${layers}${pins}</div>`;
 };
