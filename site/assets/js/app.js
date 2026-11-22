@@ -22,14 +22,41 @@
 
   /* ---------- Banners editáveis (data/banners.js) ---------- */
   const B = window.GM_BANNERS || {};
-  $$('[data-banner]').forEach((sec) => {
-    const b = B[sec.dataset.banner];
+  const stageHTML = (b) => {
+    const layers = (b.camadas || []).map((c, i) => `<img class="layer" src="${ROOT + c.img}" alt="" style="--x:${c.x}%;--y:${c.y}%;--w:${c.w}%;--z:${c.z || 3};--rot:${c.rot || 0}deg;--i:${i}" data-depth="${c.z || 3}">`).join('');
+    const pins = (b.selos || []).map((x, i) => `<span class="pin" style="--x:${x.x}%;--y:${x.y}%;--i:${i}" data-depth="6"><i aria-hidden="true"></i>${x.texto}</span>`).join('');
+    return `<div class="stage-floor" aria-hidden="true"></div>${layers}${pins}`;
+  };
+  const applyBanner = (sec, b) => {
     if (!b) return;
-    const img = $('[data-banner-img]', sec);
-    if (img && b.imagem) img.src = ROOT + b.imagem;
     if (b.tema) { sec.classList.toggle('hero--light', b.tema === 'claro'); sec.classList.toggle('hero--orange', b.tema !== 'claro'); }
-    if (b.imagemModo) { sec.classList.toggle('hero--photo', b.imagemModo === 'foto'); sec.classList.toggle('hero--product', b.imagemModo !== 'foto'); }
-  });
+    const st = $('[data-stage]', sec);
+    if (st && b.camadas) { const html = stageHTML(b); if (st.dataset.sig !== html) { st.innerHTML = html; st.dataset.sig = html; } }
+  };
+  $$('[data-banner]').forEach((sec) => applyBanner(sec, B[sec.dataset.banner]));
+
+  /* profundidade 3D das camadas: mouse e rolagem */
+  if (!reduce) {
+    $$('.hero').forEach((hero) => {
+      let mx = 0, my = 0, raf = 0;
+      const move = () => {
+        raf = 0;
+        const sy = Math.min(1, Math.max(0, scrollY / (hero.offsetHeight || 1)));
+        $$('[data-stage]', hero).forEach((st) => {
+          st.style.setProperty('--ry', `${mx * 10}deg`);
+          st.style.setProperty('--rx', `${-my * 8}deg`);
+          $$('[data-depth]', st).forEach((el) => {
+            const d = +el.dataset.depth;
+            el.style.setProperty('--px', `${mx * d * 7}px`);
+            el.style.setProperty('--py', `${my * d * 6 - sy * d * 14}px`);
+          });
+        });
+      };
+      if (fine) hero.addEventListener('pointermove', (e) => { const r = hero.getBoundingClientRect(); mx = (e.clientX - r.left) / r.width - 0.5; my = (e.clientY - r.top) / r.height - 0.5; if (!raf) raf = requestAnimationFrame(move); });
+      if (fine) hero.addEventListener('pointerleave', () => { mx = 0; my = 0; if (!raf) raf = requestAnimationFrame(move); });
+      addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(move); }, { passive: true });
+    });
+  }
 
   /* ---------- Header, progresso de leitura ---------- */
   const hdr = $('[data-hdr]');
@@ -91,7 +118,7 @@
 
   /* ---------- 3D: inclinação com o mouse ---------- */
   if (fine) {
-    $$('[data-parallax], .lab, .benefit, .seal-card').forEach((el) => {
+    $$('.lab, .benefit, .seal-card').forEach((el) => {
       const target = el.matches('[data-parallax]') ? $('.hero-frame', el) : el;
       if (!target) return;
       const base = getComputedStyle(target).transform;
@@ -114,13 +141,11 @@
     (B.home || []).forEach((b, i) => {
       const s = slides[i];
       if (!s) return;
-      const img = $('.hero-frame img', s); if (img && b.imagem) img.src = ROOT + b.imagem;
+      applyBanner(s, b);
       const h = $('.display', s); if (h && b.titulo) h.innerHTML = b.titulo;
       const p = $('.lead', s); if (p && b.texto) p.textContent = b.texto;
       const sel = $('.selo', s); if (sel) sel.textContent = b.selo || '';
       const link = $('.btn-outline', s); if (link && b.link) { link.href = ROOT + b.link; link.firstChild.textContent = (b.botao || 'Saiba mais') + ' '; }
-      s.classList.toggle('hero--light', b.tema === 'claro'); s.classList.toggle('hero--orange', b.tema !== 'claro');
-      s.classList.toggle('hero--photo', b.imagemModo === 'foto'); s.classList.toggle('hero--product', b.imagemModo !== 'foto');
     });
     const dots = $$('[data-dot]', car);
     let i = 0, timer;
@@ -411,7 +436,11 @@
     let cur = -1;
     const set = (n) => {
       if (n === cur) return;
-      imgs.forEach((im, k) => { im.classList.toggle('prev', k === cur); im.classList.toggle('on', k === n); });
+      imgs.forEach((im, k) => {
+        im.classList.toggle('prev', k === cur); im.classList.toggle('on', k === n);
+        const v = $('video', im);
+        if (v) { if (k === n) { v.play().catch(() => {}); } else v.pause(); }
+      });
       steps.forEach((s, k) => s.classList.toggle('on', k === n));
       cur = n;
     };
@@ -431,7 +460,7 @@
     }));
   }
 
-  /* ---------- Mais vendido da semana: rotação automática por semana ISO ---------- */
+  /* ---------- Mais vendido da semana: rotação automática, foto sem fundo em 3D e pontos interativos ---------- */
   const week = $('[data-week]');
   if (week && window.GM_DESTAQUES) {
     const d = new Date();
@@ -440,20 +469,51 @@
     const wk = Math.ceil(((t - new Date(Date.UTC(t.getUTCFullYear(), 0, 1))) / 864e5 + 1) / 7);
     const key = `${t.getUTCFullYear()}-W${String(wk).padStart(2, '0')}`;
     const { rodizio = [], fixo = {} } = window.GM_DESTAQUES;
-    const p = (fixo[key] && rodizio.find((x) => x.id === fixo[key])) || rodizio[(t.getUTCFullYear() * 53 + wk) % rodizio.length];
-    if (p) {
-      $('[data-week-media]', week).innerHTML = `<div class="frame"><img src="${ROOT + p.img}" alt="${p.name}" loading="lazy"></div>`;
-      $('[data-week-label]', week).textContent = `semana ${wk}`;
+    const weekP = (fixo[key] && rodizio.find((x) => x.id === fixo[key])) || rodizio[(t.getUTCFullYear() * 53 + wk) % rodizio.length];
+    const media = $('[data-week-media]', week);
+    const label = $('[data-week-label]', week);
+    let auto;
+    const show = (p) => {
+      const isWeek = p === weekP;
+      label.textContent = isWeek ? `semana ${wk}` : 'também em destaque';
+      media.innerHTML = `<div class="w3d" data-w3d><div class="w3d-floor" aria-hidden="true"></div><img src="${ROOT + p.img}" alt="${p.name}">${(p.pontos || []).map((h, i) => `<button class="hot" type="button" style="--x:${h.x}%;--y:${h.y}%" data-hot="${i}" aria-label="${h.titulo}"><span>${i + 1}</span></button>`).join('')}<div class="hot-tip" data-tip hidden></div></div>`;
       $('[data-week-name]', week).textContent = p.name;
       $('[data-week-desc]', week).textContent = p.desc;
+      $('[data-week-points]', week).innerHTML = (p.pontos || []).map((h, i) => `<li data-hotli="${i}"><b>${i + 1}</b><div><strong>${h.titulo}</strong><span>${h.texto}</span></div></li>`).join('');
       const payload = JSON.stringify({ id: p.id, name: p.name, line: p.line, url: p.url, img: p.img }).replace(/'/g, '&#39;');
       $('[data-week-actions]', week).innerHTML = `<a class="btn btn-white" href="${ROOT}${p.url}">Ver produto</a><button class="btn btn-ghost-white" type="button" data-add='${payload}'>+ Adicionar ao orçamento</button>`;
-      // gira o produto em 3D conforme a rolagem
-      const frame = $('.frame', week);
+      $$('[data-thumb]', week).forEach((b) => b.setAttribute('aria-selected', String(b.dataset.thumb === p.id)));
+      const box = $('[data-w3d]', media);
+      const tip = $('[data-tip]', media);
+      const focusHot = (i) => {
+        const h = (p.pontos || [])[i]; if (!h) return;
+        $$('.hot', box).forEach((b) => b.classList.toggle('on', +b.dataset.hot === i));
+        $$('[data-hotli]', week).forEach((li) => li.classList.toggle('on', +li.dataset.hotli === i));
+        tip.hidden = false; tip.innerHTML = `<strong>${h.titulo}</strong><span>${h.texto}</span>`;
+        tip.style.left = `${h.x}%`; tip.style.top = `${h.y}%`;
+        tip.classList.toggle('left', h.x > 55);
+      };
+      let k = 0;
+      clearInterval(auto);
+      if ((p.pontos || []).length && !reduce) auto = setInterval(() => focusHot(k++ % p.pontos.length), 2600);
+      if ((p.pontos || []).length) focusHot(0);
+      const stop = () => clearInterval(auto);
+      $$('.hot', box).forEach((b) => { b.addEventListener('click', () => { stop(); focusHot(+b.dataset.hot); }); b.addEventListener('mouseenter', () => { stop(); focusHot(+b.dataset.hot); }); });
+      $$('[data-hotli]', week).forEach((li) => li.addEventListener('mouseenter', () => { stop(); focusHot(+li.dataset.hotli); }));
+      if (fine) {
+        box.addEventListener('pointermove', (e) => { const r = box.getBoundingClientRect(); box.style.setProperty('--tx', `${((e.clientX - r.left) / r.width - 0.5) * 16}deg`); box.style.setProperty('--ty', `${-((e.clientY - r.top) / r.height - 0.5) * 12}deg`); });
+        box.addEventListener('pointerleave', () => { box.style.setProperty('--tx', '0deg'); box.style.setProperty('--ty', '0deg'); });
+      }
+    };
+    if (weekP) {
+      const others = [weekP, ...rodizio.filter((x) => x !== weekP)];
+      $('[data-week-thumbs]', week).innerHTML = others.map((p) => `<button type="button" role="tab" data-thumb="${p.id}" aria-label="${p.name}"><img src="${ROOT + p.img}" alt=""></button>`).join('');
+      $$('[data-thumb]', week).forEach((b) => b.addEventListener('click', () => show(others.find((x) => x.id === b.dataset.thumb))));
+      show(weekP);
       if (!reduce) addEventListener('scroll', () => {
         const r = week.getBoundingClientRect();
-        const k = clamp((innerHeight - r.top) / (innerHeight + r.height));
-        frame.style.setProperty('--ry', `${-22 + k * 34}deg`);
+        const kk = clamp((innerHeight - r.top) / (innerHeight + r.height));
+        week.style.setProperty('--wr', `${-14 + kk * 28}deg`);
       }, { passive: true });
     }
   }

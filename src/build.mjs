@@ -2,7 +2,7 @@
 import { mkdirSync, writeFileSync, readFileSync, readdirSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { site, lines, extras, products, articles, faqs, homeFaq, testimonials, cycle, materials, redirects } from './data.mjs';
+import { site, lines, extras, products, articles, faqs, homeFaq, testimonials, cycle, materials, redirects, hotspots } from './data.mjs';
 import { config } from './config.mjs';
 import { ico } from './mock.mjs';
 
@@ -37,12 +37,22 @@ const ctaSpecialist = (msg = 'Olá! Quero falar com um especialista grafMED.', e
 
 const eyebrow = (t) => `<p class="eyebrow">${t}</p>`;
 
-// linhas finas decorativas, no estilo das peças de Instagram da marca
-const deco = (cls = '') => `<svg class="deco ${cls}" viewBox="0 0 1440 600" preserveAspectRatio="none" aria-hidden="true">
-  <path d="M-40 520 C 240 420, 300 160, 620 120 S 1100 60, 1500 -20" />
-  <path d="M980 640 C 1080 480, 1240 430, 1500 420" />
-  <path d="M-60 80 C 120 60, 200 0, 260 -60" />
+// padrão de hexágonos da marca (linhas finas), mais forte no lado da imagem para não atrapalhar a leitura
+let hexN = 0;
+const hexes = (side = 'right') => {
+  const id = `hx${++hexN}`;
+  return `<svg class="hexes hexes-${side}" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="${id}p" width="104" height="180" patternUnits="userSpaceOnUse" patternTransform="scale(1.15)">
+      <path d="M52 0 L104 30 L104 90 L52 120 L0 90 L0 30 Z M52 120 L52 180 M0 90 L0 150 L52 180 L104 150 L104 90" fill="none" stroke-width="1.2"/>
+    </pattern>
+    <radialGradient id="${id}g" cx="${side === 'right' ? '82%' : side === 'center' ? '50%' : '18%'}" cy="40%" r="62%"><stop offset="0" stop-color="#fff" stop-opacity="1"/><stop offset=".55" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+    <mask id="${id}m"><rect width="100%" height="100%" fill="url(#${id}g)"/></mask>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#${id}p)" mask="url(#${id}m)"/>
 </svg>`;
+};
+const deco = hexes;
 
 const accordion = (items, open = -1) => `
 <div class="acc">
@@ -141,14 +151,24 @@ const breadcrumb = (items, r) => `
   .map(([t, u]) => `<span aria-hidden="true">/</span>${u ? `<a href="${r(u)}">${t}</a>` : `<span aria-current="page">${t}</span>`}`)
   .join('')}</nav>`;
 
+// Palco do banner: composição de fotos sem fundo em camadas 3D, vídeo ou cena 3D
+const stage = (r, b, eager = false) => {
+  if (b.cena3d === 'conversao') return `<div class="hero-media hero-3d" data-conv3d><div class="conv-stage" data-conv-stage></div>
+    <div class="conv-ui"><span class="conv-tag">Material: <b data-conv-mat>Velcro</b></span><span class="conv-tag">Peças convertidas: <b data-conv-count>0</b></span></div>
+    <div class="conv-picks" role="group" aria-label="Escolha o material">${[['velcro', 'Velcro'], ['micropore', 'Micropore'], ['feltro', 'Feltro'], ['espuma', 'Espuma'], ['silicone', 'Silicone']].map(([k, n], i) => `<button type="button" data-conv-pick="${k}" aria-pressed="${i === 0}">${n}</button>`).join('')}</div></div>`;
+  if (b.video) return `<div class="hero-media hero-video"><video src="${r(b.video)}" poster="${r(b.poster || '')}" autoplay muted loop playsinline preload="metadata"></video></div>`;
+  const layers = (b.camadas || []).map((c, i) => `<img class="layer" src="${r(c.img)}" alt="" style="--x:${c.x}%;--y:${c.y}%;--w:${c.w}%;--z:${c.z || 3};--rot:${c.rot || 0}deg;--i:${i}" data-depth="${c.z || 3}" ${eager && i === (b.camadas.length - 1) ? 'fetchpriority="high"' : 'loading="lazy"'}>`).join('');
+  const pins = (b.selos || []).map((p, i) => `<span class="pin" style="--x:${p.x}%;--y:${p.y}%;--i:${i}" data-depth="6"><i aria-hidden="true"></i>${p.texto}</span>`).join('');
+  return `<div class="hero-media hero-stage" data-stage><div class="stage-floor" aria-hidden="true"></div>${layers}${pins}</div>`;
+};
+
 // Banner de página (troca interna pelo arquivo data/banners.js)
 function pageHero(r, key, { crumbs = [], selo = '', title, text, actions = '', h = 'h1' }) {
   const b = BANNERS[key] || {};
   const tema = b.tema === 'claro' ? 'light' : 'orange';
-  const modo = b.imagemModo === 'foto' ? 'photo' : 'product';
   return `
-<section class="hero hero-page hero--${tema} hero--${modo}" data-banner="${key}">
-  ${deco()}
+<section class="hero hero-page hero--${tema}" data-banner="${key}">
+  ${hexes()}
   <div class="wrap hero-in">
     <div class="hero-copy">
       ${crumbs.length ? breadcrumb(crumbs, r) : ''}
@@ -157,7 +177,7 @@ function pageHero(r, key, { crumbs = [], selo = '', title, text, actions = '', h
       ${text ? `<p class="lead">${text}</p>` : ''}
       ${actions ? `<div class="hero-cta">${actions}</div>` : ''}
     </div>
-    ${b.imagem ? `<div class="hero-media" data-parallax><div class="hero-frame"><img src="${r(b.imagem)}" alt="" data-banner-img fetchpriority="high"></div></div>` : ''}
+    ${stage(r, b, true)}
   </div>
 </section>`;
 }
@@ -170,10 +190,9 @@ function homeHero(r) {
     ${slides
       .map((s, i) => {
         const tema = s.tema === 'claro' ? 'light' : 'orange';
-        const modo = s.imagemModo === 'foto' ? 'photo' : 'product';
         const H = i === 0 ? 'h1' : 'h2';
-        return `<div class="slide hero--${tema} hero--${modo}${i === 0 ? ' is-on' : ''}" role="group" aria-roledescription="slide" aria-label="${i + 1} de ${slides.length}"${i ? ' aria-hidden="true"' : ''}>
-        ${deco()}
+        return `<div class="slide hero--${tema}${i === 0 ? ' is-on' : ''}" role="group" aria-roledescription="slide" aria-label="${i + 1} de ${slides.length}"${i ? ' aria-hidden="true"' : ''}>
+        ${hexes()}
         <div class="wrap hero-in">
           <div class="hero-copy">
             <p class="selo">${s.selo || ''}</p>
@@ -181,7 +200,7 @@ function homeHero(r) {
             <p class="lead">${s.texto}</p>
             <div class="hero-cta">${ctaSpecialist('Olá! Vim pela página inicial e quero falar com um especialista grafMED.', 'btn-lg')}<a class="btn btn-outline btn-lg" href="${r(s.link)}">${s.botao} ${arrow}</a></div>
           </div>
-          <div class="hero-media" data-parallax><div class="hero-frame"><img src="${r(s.imagem)}" alt="" ${i === 0 ? 'fetchpriority="high"' : 'loading="lazy"'}></div></div>
+          ${stage(r, s, i === 0)}
         </div>
       </div>`;
       })
@@ -194,34 +213,60 @@ function homeHero(r) {
 </section>`;
 }
 
-// Simulador com as fotos reais do indicador (antes rosa, depois marrom)
+// Etiqueta 3D com indicador químico Tipo 1: puxe a linha e a faixa muda de rosa para marrom
 const indicatorSim = (r, compact = false) => `
-<section class="section ind-sec${compact ? ' compact' : ''}" data-sim>
+<section class="section ind-sec${compact ? ' compact' : ''}" data-ind3d>
   <div class="wrap ind-in">
     <div class="ind-copy reveal">
       <p class="box-tag">Indicador químico Tipo 1</p>
       <h2 class="h2">Entenda como funciona <strong>a mudança de cor na esterilização.</strong></h2>
-      <p class="muted">Na etiqueta grafMED, a faixa indicadora sai da fábrica rosa e fica marrom depois do ciclo a vapor. A leitura é imediata para a equipe da CME.</p>
-      <div class="sim-ctrl">
-        <div class="sim-head"><span>Ciclo de esterilização a vapor</span><b data-sim-temp>25 °C</b></div>
-        <input type="range" min="0" max="100" value="0" data-sim-range aria-label="Progresso do ciclo de esterilização">
-        <div class="sim-steps"><span>Carga</span><span>Aquecimento</span><span>Esterilização</span><span>Secagem</span></div>
-        <p class="sim-status" data-sim-status aria-live="polite">Arraste ou role a página para simular.</p>
+      <p class="muted">A faixa indicadora da etiqueta grafMED sai da fábrica rosa e fica marrom depois do ciclo a vapor. Puxe a linha da etiqueta, gire e aproxime para ver o indicador de perto.</p>
+      <div class="ind-panel">
+        <div class="ind-row"><span>Autoclave a vapor</span><b data-ind-temp>25 °C</b></div>
+        <div class="ind-bar"><i data-ind-bar></i></div>
+        <div class="ind-legend"><span><i class="sw sw-pink"></i>Rosa: antes do processo</span><span><i class="sw sw-brown"></i>Marrom: processo concluído</span></div>
+        <p class="ind-status" data-ind-status aria-live="polite">Puxe a linha para iniciar o ciclo a vapor.</p>
+        <div class="ind-actions"><button class="btn btn-primary btn-sm" type="button" data-ind-play>Simular ciclo completo</button><button class="btn btn-outline btn-sm" type="button" data-ind-reset>Reiniciar</button></div>
       </div>
     </div>
     <div class="ind-visual reveal">
-      <div class="ind-photo"><img src="${r('assets/img/indicador/pacote.webp')}" alt="Etiqueta grafMED com indicador químico em embalagem de instrumental" loading="lazy"></div>
-      <div class="ind-lens" data-sim-lens>
-        <img src="${r('assets/img/indicador/antes.webp')}" alt="Faixa indicadora rosa antes do processo" class="lens-a">
-        <img src="${r('assets/img/indicador/depois.webp')}" alt="Faixa indicadora marrom depois do processo" class="lens-b" data-sim-after>
+      <div class="ind-stage" data-ind-stage>
+        <div class="ind-tools" role="group" aria-label="Zoom da etiqueta">
+          <button type="button" data-zoom-in aria-label="Aproximar">+</button>
+          <button type="button" data-zoom-out aria-label="Afastar">−</button>
+          <button type="button" class="wide" data-focus>Ver o indicador de perto</button>
+        </div>
+        <div class="cord" data-cord aria-hidden="true"></div>
+        <button class="pull" type="button" data-pull aria-label="Puxe para simular a esterilização"><span class="pull-grip" aria-hidden="true"></span><span class="pull-txt">Puxe</span></button>
+        <p class="ind-hint">Arraste para girar · role ou use + e − para aproximar</p>
       </div>
-      <div class="ind-caps"><span data-cap="a" class="on"><b>Antes</b> do processo</span><span data-cap="b"><b>Depois</b> do processo</span></div>
     </div>
   </div>
 </section>`;
 
+// Cenas das etapas do ciclo: fotos sem fundo em 3D, vídeo real da autoclave e prontuário ilustrado
+const cycleScenes = (r) => {
+  const scenes = [
+    `<div class="cs-layers"><img class="cl" style="--x:40%;--y:46%;--w:78%;--rot:-8deg" src="${r('assets/img/recorte/x-fita-identificadora-para-instrumental-cirurgico.webp')}" alt="Instrumental cirúrgico"><img class="cl" style="--x:70%;--y:72%;--w:46%;--rot:10deg" src="${r('assets/img/recorte/x-protetor-de-policarbonato-para-instrumental-cirurgico.webp')}" alt="Protetor de ponta para instrumental"></div><span class="cs-badge">Instrumental limpo, inspecionado e protegido</span>`,
+    `<div class="cs-layers"><img class="cl" style="--x:38%;--y:52%;--w:50%;--rot:-6deg" src="${r('assets/img/recorte/x-grafdental-pacote.webp')}" alt="Pacote identificado com etiqueta"><img class="cl" style="--x:72%;--y:44%;--w:56%;--rot:8deg" src="${r('assets/img/recorte/x-etiqueta-duplo-uso-para-esterilizacao-a-vapor.webp')}" alt="Rolo de etiquetas duplo uso"></div><span class="cs-badge">Lote, data, validade e responsável na etiqueta</span>`,
+    `<video src="${r('assets/video/autoclave.mp4')}" poster="${r('assets/video/autoclave.jpg')}" muted loop playsinline preload="none" data-cycle-video></video><span class="cs-badge">Indicador Tipo 1 reage no ciclo a vapor</span>`,
+    `<div class="cs-layers"><img class="cl" style="--x:46%;--y:46%;--w:80%;--rot:-4deg" src="${r('assets/img/recorte/x-app-container-tag.webp')}" alt="Contêiner com tag de lacre"><img class="cl" style="--x:72%;--y:76%;--w:50%;--rot:8deg" src="${r('assets/img/recorte/x-tag-duplo-uso-com-lacre-para-containers.webp')}" alt="Tag duplo uso com lacre"></div><span class="cs-badge">Contêineres lacrados e identificados</span>`,
+    `<div class="pront" aria-label="Prontuário do paciente com a parte destacável da etiqueta">
+      <div class="pront-doc">
+        <div class="pront-head"><b>PRONTUÁRIO DO PACIENTE</b><span>Registro de materiais utilizados</span></div>
+        <dl><div><dt>Paciente</dt><dd>M. A. S.</dd></div><div><dt>Procedimento</dt><dd>Cirurgia geral</dd></div><div><dt>Sala</dt><dd>04</dd></div><div><dt>Data</dt><dd>22/11</dd></div></dl>
+        <p class="pront-lbl">Material esterilizado (etiqueta de rastreabilidade)</p>
+        <div class="pront-slot"><canvas data-label-art="brown" data-scale="0.42" class="pront-label"></canvas></div>
+        <div class="pront-lines"><i></i><i></i><i></i></div>
+        <div class="pront-sign"><span>Enfermagem CME</span><span>Circulante</span></div>
+      </div>
+    </div><span class="cs-badge">A parte destacável fica no registro do paciente</span>`,
+  ];
+  return scenes.map((h, i) => `<figure class="cycle-img${i === 0 ? ' on' : ''}" data-cycle-img>${h}<figcaption>${cycle[i][0]} · ${cycle[i][1]}</figcaption></figure>`).join('');
+};
+
 // ---------- layout ----------
-function layout({ path, title, desc, body, schema = [], active = '', head = '' }) {
+function layout({ path, title, desc, body, schema = [], active = '', head = '', three = false }) {
   const depth = path.split('/').length - 1;
   const pre = '../'.repeat(depth);
   const r = (u) => pre + u;
@@ -377,6 +422,7 @@ ${wa('Olá! Vim pelo site da grafMED e quero falar com um especialista.', `${waI
 <script src="${r('data/banners.js')}"></script>
 <script src="${r('data/destaques.js')}"></script>
 <script src="${r('assets/js/app.js')}"></script>
+${three ? `<script src="${r('assets/vendor/three.min.js')}"></script>\n<script src="${r('assets/js/scenes.js')}"></script>` : ''}
 </body>
 </html>
 `;
@@ -396,6 +442,7 @@ layout({
   title: 'grafMED | Etiquetas e rastreabilidade para esterilização, CME e indústria',
   desc: site.description,
   active: 'home',
+  three: true,
   schema: [faqSchema(homeFaq)],
   body: (r) => `
 ${homeHero(r)}
@@ -424,31 +471,37 @@ ${indicatorSim(r)}
         <div class="cycle-bar"><i data-cycle-bar></i></div>
       </div>
       <div class="cycle-media">
-        ${cycle.map(([n, t, , img], i) => `<figure class="cycle-img${i === 0 ? ' on' : ''}" data-cycle-img><img src="${r(img)}" alt="${t}" loading="lazy"><figcaption>${n} · ${t}</figcaption></figure>`).join('')}
+        ${cycleScenes(r)}
       </div>
     </div>
   </div>
 </section>
 
 <section class="week-sec" data-week>
-  ${deco()}
+  ${hexes('left')}
   <div class="wrap week">
-    <div class="week-media" data-week-media data-spin></div>
+    <div class="week-media" data-week-media></div>
     <div class="week-body">
-      <p class="selo"><span class="pulse pulse-white" aria-hidden="true"></span> Mais vendido da semana · <span data-week-label>semana</span></p>
+      <p class="selo"><span class="pulse" aria-hidden="true"></span> Mais vendido da semana · <span data-week-label>semana</span></p>
       <h2 class="h2" data-week-name>Destaque da semana</h2>
       <p data-week-desc></p>
+      <ul class="week-points" data-week-points></ul>
       <div class="week-actions" data-week-actions></div>
+      <div class="week-thumbs" data-week-thumbs role="tablist" aria-label="Outros destaques"></div>
     </div>
   </div>
 </section>
 
-<section class="section stats-sec">
-  <div class="wrap stats">
-    <div class="stat reveal"><b data-count="20" data-prefix="+">+20</b><span>anos de mercado</span></div>
-    <div class="stat reveal" style="--d:80ms"><b data-count="100" data-suffix="%">100%</b><span>tecnologia nacional</span></div>
-    <div class="stat reveal" style="--d:160ms"><b data-count="1000" data-prefix="+">+1.000</b><span>formatos de etiquetas</span></div>
-    <div class="stat reveal" style="--d:240ms"><b data-count="19">19</b><span>cores de fitas identificadoras</span></div>
+<section class="numbers">
+  ${hexes('center')}
+  <div class="wrap">
+    <h2 class="h2 numbers-title reveal">Números que mostram <strong>a força da grafMED.</strong></h2>
+    <div class="stats">
+      <div class="stat reveal"><b data-count="20" data-prefix="+">+20</b><span>anos de mercado</span></div>
+      <div class="stat reveal" style="--d:80ms"><b data-count="100" data-suffix="%">100%</b><span>tecnologia nacional</span></div>
+      <div class="stat reveal" style="--d:160ms"><b data-count="1000" data-prefix="+">+1.000</b><span>formatos de etiquetas</span></div>
+      <div class="stat reveal" style="--d:240ms"><b data-count="19">19</b><span>cores de fitas identificadoras</span></div>
+    </div>
   </div>
 </section>
 
@@ -481,6 +534,7 @@ for (const l of lines) {
     title: `${l.name} | grafMED`,
     desc: `${l.short} ${strip(l.text)}`.slice(0, 158),
     active: `produtos-${l.slug}`,
+    three: l.slug === 'cme-hospitalar' || l.slug === 'grafdental',
     schema: lf ? [faqSchema(lf)] : [],
     body: (r) => `
 ${pageHero(r, l.slug, { crumbs: [['Produtos', 'produtos/index.html'], [l.name]], selo: `${l.chip} · ${l.audience}`, title: l.title, text: l.text, actions: `${ctaSpecialist(`Olá! Quero falar com um especialista sobre a linha ${l.name}.`, 'btn-lg')}<a class="btn btn-outline btn-lg" href="#produtos">Ver produtos ${arrow}</a>` })}
@@ -576,6 +630,7 @@ layout({
   title: 'Conversão de Matéria-Prima | Corte de bobinas e montagem de kits | grafMED',
   desc: 'Você envia a bobina, a grafMED corta, monta, embala e entrega pronto para uso ou revenda. Conversão de velcro, feltro, micropore, espumas e mais.',
   active: 'produtos-conversao',
+  three: true,
   schema: [faqSchema(faqs.conversao)],
   body: (r) => `
 ${pageHero(r, 'conversao-materia-prima', { crumbs: [['Produtos', 'produtos/index.html'], ['Conversão de Matéria-Prima']], selo: 'Conversão · Serviços e OEM', title: 'Precisamos apenas do seu material <strong>para a conversão.</strong>', text: 'Você envia a bobina. A grafMED corta, monta, embala e entrega pronto para uso ou revenda, sem você precisar de máquinas ou equipe de acabamento.', actions: ctaSpecialist('Olá! Quero um orçamento de conversão de matéria-prima.', 'btn-lg') })}
@@ -625,8 +680,28 @@ layout({
   title: 'Projetos sob medida | grafMED desenvolve para você',
   desc: 'Não encontrou no nosso site? Fale com um especialista em projetos da grafMED e descreva a sua necessidade.',
   active: 'produtos-projetos',
+  three: true,
   body: (r) => `
 ${pageHero(r, 'projetos', { crumbs: [['Produtos', 'produtos/index.html'], ['Projetos']], selo: 'Projetos · P&D', title: 'Não encontrou no nosso site? <strong>Fale com um especialista em projetos.</strong>', text: 'Conte o que você precisa. A grafMED avalia e desenvolve a solução para o seu processo.' })}
+<section class="section section-cream cfg-sec"><div class="wrap">
+  <div class="sec-head">${eyebrow('Monte uma prévia em 3D')}<h2 class="h2">Desenhe a sua etiqueta <strong>e envie para o especialista.</strong></h2><p class="muted">Escolha forma, medida, material e indicador. A prévia gira em 3D e as informações vão prontas na mensagem.</p></div>
+  <div class="cfg" data-cfg3d>
+    <div class="cfg-view"><div class="cfg-stage" data-cfg-stage></div><span class="cfg-size" data-cfg-size>60 × 40 mm</span><p class="ind-hint">Arraste para girar</p></div>
+    <div class="cfg-controls">
+      <fieldset class="seg-group"><legend>Forma</legend>
+        <label><input type="radio" name="forma" value="retangular" checked><span>Retangular</span></label>
+        <label><input type="radio" name="forma" value="redonda"><span>Redonda</span></label>
+        <label><input type="radio" name="forma" value="oval"><span>Oval</span></label>
+      </fieldset>
+      <label class="field range"><span>Largura <output data-for="largura">60 mm</output></span><input type="range" name="largura" min="15" max="150" value="60"></label>
+      <label class="field range"><span>Altura <output data-for="altura">40 mm</output></span><input type="range" name="altura" min="10" max="150" value="40"></label>
+      <label class="field"><span>Material</span><select name="material"><option value="papel">Papel couché branco</option><option value="bopp">BOPP transparente</option><option value="prata">Poliéster prata</option><option value="kraft">Papel kraft</option></select></label>
+      <label class="field"><span>Indicador químico</span><select name="indicador"><option value="nenhum">Sem indicador</option><option value="vapor">Vapor (Tipo 1)</option><option value="vpph">Peróxido (VPPH)</option></select></label>
+      <label class="field"><span>Texto principal</span><input name="texto" maxlength="20" value="SUA MARCA"></label>
+      ${wa('Olá! Quero desenvolver uma etiqueta sob medida.', `${waIcon} Enviar este projeto no WhatsApp`, 'btn btn-primary btn-block', 'data-cfg-wa data-track="whatsapp"')}
+    </div>
+  </div>
+</div></section>
 <section class="section"><div class="wrap">
   <div class="project-box reveal">
     <form class="form" data-form="projeto" novalidate>
@@ -1003,7 +1078,7 @@ if (!existsSync(join(ROOT, 'data/destaques.js'))) writeFileSync(
 // O site calcula a semana do ano (ISO) e mostra o próximo item desta lista, em rodízio.
 // A equipe só mantém a lista (ordem = ordem do rodízio). Para fixar um produto numa semana: fixo: { "2026-W48": "id-do-produto" }.
 // Na versão Wix: Coleção do CMS (produto, ordem, ativo) e o mesmo cálculo em Velo.
-window.GM_DESTAQUES = ${JSON.stringify({ rodizio: weekProducts.map((p) => ({ id: p.id, name: p.name, line: lineBy(p.line).name, desc: p.short, img: p.img, url: productUrl(p) })), fixo: {} }, null, 2)};
+window.GM_DESTAQUES = ${JSON.stringify({ rodizio: weekProducts.map((p) => ({ id: p.id, name: p.name, line: lineBy(p.line).name, desc: p.short, img: p.img, url: productUrl(p), pontos: (hotspots[p.id] || []).map(([x, y, titulo, texto]) => ({ x, y, titulo, texto })) })), fixo: {} }, null, 2)};
 `
 );
 const today = new Date().toISOString().slice(0, 10);

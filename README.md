@@ -90,26 +90,30 @@ Depois recarregue o navegador. Os arquivos `site/data/banners.js` (banners das p
 ## Direção visual aplicada
 
 - Logo oficial em todas as aplicações (versão branca sobre o laranja).
-- Somente Montserrat, variando pesos (300 a 800) e cores.
+- Somente Montserrat, variando pesos (300 a 800) e cores, sem espaçamento largo entre letras.
 - Cantos pouco arredondados, com bordas finas. Sem travessões nos textos.
-- Gradiente laranja da marca em banners, destaque da semana, chamadas e rodapé, com as linhas finas das peças de Instagram.
-- Fundos em branco e creme, sem vários tons de cinza.
-- Cards em formato de etiqueta (picote com recortes laterais e selo da linha); no hover aparece "+ Adicionar ao orçamento".
-- Fotos reais de produto, instrumentais, autoclave e CME. Logos de clientes iguais aos do site atual.
+- Gradiente laranja da marca com o padrão de hexágonos em linhas finas, mais forte do lado da imagem para não atrapalhar a leitura.
+- Todas as fotos de produto **sem fundo e padronizadas** (mesmo enquadramento e margem), em `assets/img/recorte`.
+- Cards em formato de etiqueta; no hover aparece "+ Adicionar ao orçamento".
 
-## Interatividade e animação
+## Interatividade, 3D e animação
 
-- Carrossel de banners na Home (troca automática, setas, toque).
-- Simulador do indicador químico Tipo 1 com as fotos reais da etiqueta (rosa antes, marrom depois), controlado pelo arraste ou pela rolagem.
-- Seção "O ciclo completo" fixa na tela: as etapas e as fotos mudam conforme a rolagem.
-- Produto do destaque gira em 3D com a rolagem; banners e cards inclinam em 3D com o mouse.
-- Zoom na foto do produto, filtro por tipo (Vapor, VPPH, Indicador Tipo 1), produto "voando" para o orçamento, contadores animados, barra de progresso de leitura.
+- **Banners em camadas 3D**: fotos sem fundo de produtos e aplicações sobrepostas com profundidade, que se movem com o mouse e com a rolagem, com selos informativos flutuantes. Tudo editável em `site/data/banners.js`.
+- **Indicador químico Tipo 1 em 3D** (Three.js): uma etiqueta CME desenhada fiel ao produto. Ao puxar a linha, a faixa muda de rosa para marrom; dá para girar, aproximar (botões, roda do mouse ou pinça) e focar no indicador.
+- **Rastreabilidade de ponta a ponta**: a seção fica fixa na tela e cada etapa mostra uma cena própria: fotos sem fundo, vídeo real da autoclave e o prontuário do paciente com a parte destacável da etiqueta.
+- **Mais vendido da semana**: foto sem fundo em 3D, pontos numerados explicando o produto, troca entre os destaques e giro com a rolagem.
+- **Números** em negrito, em faixa de destaque.
+- **Conversão de matéria-prima**: animação 3D de bobina, prensa de corte, esteira e kit, com troca de material (velcro, micropore, feltro, espuma, silicone).
+- **Projeto sob medida**: configurador 3D (forma, medida, material, indicador e texto). A configuração vai pronta na mensagem do WhatsApp e no formulário.
+
+As cenas 3D usam o Three.js salvo em `site/assets/vendor` e texturas desenhadas no navegador, então funcionam também abrindo o `index.html` direto do disco. Sem suporte a 3D, o navegador mostra uma versão plana equivalente.
 
 ## Pendências antes de publicar
 
 1. Confirmar se (11) 94561-0928 é o WhatsApp comercial.
 2. Lista de medidas em estoque: hoje são as do site atual. A grafMED envia a lista final.
 3. Fotos sem caixa de papelão para Etiqueta de Fracionamento e Etiqueta de Despacho (estão com aviso "foto em produção").
+4. Fotos em alta resolução de alguns produtos de rótulos (as atuais vieram pequenas do site).
 4. Depoimentos autorizados e lista inicial de parceiros credenciados.
 5. Arte final dos selos "Original grafMED".
 6. Endereço e mapa do galpão do Jaraguá (`mapEmbed`).

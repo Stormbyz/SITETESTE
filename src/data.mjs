@@ -27,7 +27,7 @@ export const lines = [
     audience: 'Enfermagem de CME, CCIH e compras hospitalares',
     title: 'Rastreabilidade do instrumental, <strong>da autoclave ao prontuário.</strong>',
     text: 'Etiquetas com indicador químico Tipo 1, fitas identificadoras e tags para a Central de Material e Esterilização, conforme a RDC-15.',
-    img: 'assets/img/fotos/rolos-duplo-uso.webp', original: true, norms: ['RDC-15 ANVISA', 'ABNT NBR ISO 26825:2021'],
+    img: 'assets/img/recorte/x-app-rolos-vapor.webp', original: true, norms: ['RDC-15 ANVISA', 'ABNT NBR ISO 26825:2021'],
   },
   {
     slug: 'grafdental', chip: 'DENTAL', name: 'grafDENTAL',
@@ -35,7 +35,7 @@ export const lines = [
     audience: 'Dentistas, clínicas e distribuidores dentais',
     title: 'A esterilização do consultório, <strong>conforme a RDC 1002.</strong>',
     text: 'A linha grafDENTAL leva a rastreabilidade da CME hospitalar para a rotina do consultório odontológico, de forma simples e prática.',
-    img: 'assets/img/fotos/grafdental-pacote.webp', original: true, norms: ['RDC 1002/2025 ANVISA'],
+    img: 'assets/img/recorte/x-grafdental-pacote.webp', original: true, norms: ['RDC 1002/2025 ANVISA'],
   },
   {
     slug: 'rotulos-etiquetas', chip: 'RÓTULOS', name: 'Rótulos e Etiquetas',
@@ -43,7 +43,7 @@ export const lines = [
     audience: 'Indústria, alimentos, delivery e varejo',
     title: 'Etiquetas que garantem <strong>integridade e rastreio do seu produto.</strong>',
     text: 'Lacres, validade, QR Code, despacho e rótulos personalizados para alimentos, food service, farmácia e logística.',
-    img: 'assets/img/fotos/etiquetas-rolos.webp', original: false, norms: [],
+    img: 'assets/img/recorte/etiquetas-para-personalizar.webp', original: false, norms: [],
   },
   {
     slug: 'pulseiras', chip: 'PULSEIRAS', name: 'Pulseiras de Identificação',
@@ -51,13 +51,13 @@ export const lines = [
     audience: 'Hospitais, eventos e parques aquáticos',
     title: 'Identificação segura <strong>do começo ao fim.</strong>',
     text: 'Pulseiras para identificação de pacientes e classificação de risco, e modelos personalizados para eventos e parques.',
-    img: 'assets/img/fotos/pulseiras-leque.webp', original: false, norms: [],
+    img: 'assets/img/recorte/x-app-pulseiras-leque.webp', original: false, norms: [],
   },
 ];
 
 export const extras = [
-  { slug: 'conversao-materia-prima', chip: 'CONVERSÃO', name: 'Conversão de Matéria-Prima', short: 'Você envia o material, a gente converte.', img: 'assets/img/fotos/industria.webp' },
-  { slug: 'projetos', chip: 'P&D', name: 'Projetos sob medida', short: 'Não encontrou no site? A grafMED desenvolve.', img: 'assets/img/fotos/autoclave-pb.webp' },
+  { slug: 'conversao-materia-prima', chip: 'CONVERSÃO', name: 'Conversão de Matéria-Prima', short: 'Você envia o material, a gente converte.', img: 'assets/img/recorte/fita-fixadora-fecho-de-contato-velcro.webp' },
+  { slug: 'projetos', chip: 'P&D', name: 'Projetos sob medida', short: 'Não encontrou no site? A grafMED desenvolve.', img: 'assets/img/recorte/x-micro-etiqueta-com-qr-code.webp' },
 ];
 
 export const faqs = {
@@ -132,3 +132,15 @@ export const redirects = [
   ['/orcamentos', '/orcamento.html'],
   ['/contato', '/contato.html'],
 ];
+
+// Pontos interativos sobre as fotos sem fundo do "Mais vendido da semana" (x e y em % da foto)
+export const hotspots = {
+  'etiqueta-duplo-uso-para-esterilizacao-a-vapor': [[19, 30, 'Indicador químico Tipo 1', 'Muda de rosa para marrom ou preto após o ciclo a vapor.'], [24, 72, 'Dupla camada adesiva', 'Uma parte fica no pacote, a outra vai para o prontuário.'], [52, 34, 'Campos de rastreio', 'Data, validade, lote, equipamento e responsável.']],
+  'etiqueta-duplo-uso-para-esterilizacao': [[33, 55, 'Indicador VPPH', 'Específico para plasma de peróxido de hidrogênio.'], [72, 44, 'Parte destacável', 'Segue para o registro do paciente.'], [46, 62, 'Para baixa temperatura', 'Material compatível com o processo VPPH.']],
+  'fita-identificadora-para-instrumental-cirurgico': [[66, 45, 'Fita identificadora', 'Identificação visual por cor em cada instrumental.'], [24, 68, 'Até 19 cores', 'Diversos padrões para segregar caixas e especialidades.'], [52, 78, 'Resiste à esterilização', 'Autoadesiva, feita para o reprocessamento.']],
+  'tag-duplo-uso-com-lacre-para-containers': [[13, 50, 'Indicador para vapor', 'A faixa muda de cor após o ciclo.'], [17, 40, 'Lacre', 'Sinaliza se o contêiner foi aberto.'], [55, 45, 'Campos de registro', 'Data, validade, número da esterilização e nome.']],
+  'etiqueta-grafdental-duplo-uso-esterilizacao-a-vapor': [[35, 47, 'Indicador azul para marrom', 'Confirma a passagem pela autoclave.'], [66, 52, 'Conforme RDC 1002', 'Pensada para o consultório odontológico.'], [48, 72, 'Pacote identificado', 'Pronto para o registro do paciente.']],
+  'etiquetas-adesivas-para-seringas': [[48, 34, 'Cores padronizadas', 'Conforme a ABNT NBR ISO 26825:2021.'], [16, 40, 'Aplicação na seringa', 'Identifica o medicamento na hora do preparo.'], [74, 58, 'Caixa com 500 unidades', 'Dispensador prático para o posto de enfermagem.']],
+  'etiqueta-duplo-uso-vpph-para-etiquetadoras': [[38, 40, 'Para etiquetadoras', 'Agilidade na identificação da CME.'], [72, 72, 'Rolo VPPH', 'Material sem celulose, para baixa temperatura.'], [76, 34, 'Indicador para peróxido', 'Mudança de cor visível na liberação.']],
+  'pulseiras-de-identificacao-hospitalar': [[52, 46, 'Identificação do paciente', 'Confortável e segura durante a internação.'], [76, 70, 'Cores de classificação', 'Para o Protocolo de Manchester.'], [34, 74, 'Campo para dados', 'Escrita manual ou impressão.']],
+};
